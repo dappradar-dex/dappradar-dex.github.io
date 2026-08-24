@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dappradar-dex.github.io/sitemap.xml

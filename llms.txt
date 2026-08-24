@@ -1,0 +1,27 @@
+# DappRadar DEX — Track DEX Activity, Tokens & Volume Reference
+
+> Use DappRadar's DEX and token explorer to track decentralized-exchange activity, token prices, trading volume and rankings across many blockchains. Independent, informational, not affiliated with DappRadar. Does not execute trades.
+
+## Key Facts
+- DappRadar: dapp analytics platform tracking apps, tokens and activity across many chains
+- DEX explorer: track volume, active traders, transactions and rankings for decentralized exchanges
+- Token explorer: prices, market data and activity for ERC-20 and other tokens; verify by contract address
+- Coverage: Ethereum, its layer-2 rollups and other layer-1 networks; varies by chain and dapp
+- Data caveats: wash trading, thin liquidity, source differences and latency can distort figures
+- RADAR: DappRadar ecosystem token (ERC-20 on Ethereum); not required to use analytics
+- Analytics only — this resource does not execute trades
+- Independent resource — NOT affiliated with or endorsed by DappRadar
+
+## Internal Sections & App Navigation
+- [What is DappRadar DEX?](#what)
+- [How the DEX explorer works](#how)
+- [DEX metrics explained](#metrics)
+- [Token explorer & prices](#tokens)
+- [Chains & coverage](#chains)
+- [Data accuracy & caveats](#accuracy)
+- [Using analytics safely](#safety)
+- [FAQ](#faq)
+- [Open DEX Explorer](dashboard/index.html)
+
+## Disclaimer
+Independent, informational page. Not affiliated with or endorsed by DappRadar. Analytics only; does not execute trades. Not financial advice.
