@@ -1,371 +1,1187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>DappRadar DEX — Track DEX Activity, Tokens &amp; Volume</title>
-<meta content="DappRadar DEX: use DappRadar's DEX and token explorer to track decentralized-exchange activity, token prices, trading volume and rankings across many blockchains. Independent, informational, not affiliated with DappRadar." name="description"/>
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
-<meta content="#0a0e14" name="theme-color"/>
-<link href="https://dappradar-dex.github.io/" rel="canonical"/>
-<link href="radar.png" rel="icon" type="image/png"/>
-<link href="radar.png" rel="apple-touch-icon"/>
-<link href="manifest.webmanifest" rel="manifest"/>
-<link href="radar.png" rel="image_src"/>
-<link crossorigin="" href="https://api.coingecko.com" rel="preconnect"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DappRadar DEX — Compare Exchanges Before You Swap ETH to USDC</title>
+<meta name="description" content="Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.">
+<link rel="canonical" href="https://dappradar-dex.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DappRadar DEX">
+<meta property="og:description" content="Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.">
+<meta property="og:url" content="https://dappradar-dex.github.io/">
+<meta property="og:image" content="https://dappradar-dex.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DappRadar DEX">
+<meta name="twitter:description" content="Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.">
+<meta name="twitter:image" content="https://dappradar-dex.github.io/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://dappradar-dex.github.io/#website", "url": "https://dappradar-dex.github.io/", "name": "DappRadar DEX — Compare Exchanges Before You Swap ETH to USDC"}, {"@type": "WebPage", "@id": "https://dappradar-dex.github.io/#webpage", "url": "https://dappradar-dex.github.io/", "name": "DappRadar DEX — Compare Exchanges Before You Swap ETH to USDC", "isPartOf": {"@id": "https://dappradar-dex.github.io/#website"}, "description": "Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.", "datePublished": "2026-10-09", "dateModified": "2026-10-09"}, {"@type": "SoftwareApplication", "name": "DappRadar DEX", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dappradar-dex.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "DappRadar DEX"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a DappRadar DEX?", "acceptedAnswer": {"@type": "Answer", "text": "It is any decentralized exchange tracked on DappRadar's dashboards, where volume, total value locked and user counts are gathered from on-chain data so you can compare venues before swapping."}}, {"@type": "Question", "name": "Does DappRadar hold my funds when I use a DEX from its rankings?", "acceptedAnswer": {"@type": "Answer", "text": "No. DappRadar only aggregates and displays public on-chain data. The swap itself runs self-custody, directly between your wallet and the exchange's own smart contract."}}, {"@type": "Question", "name": "How do I pick a DEX for ETH to USDC?", "acceptedAnswer": {"@type": "Answer", "text": "Sort the rankings by volume and total value locked for that pair, then compare the quoted price and slippage on the top two or three exchanges before confirming a swap."}}, {"@type": "Question", "name": "Why does a top-ranked DEX sometimes quote a worse price?", "acceptedAnswer": {"@type": "Answer", "text": "Overall rank reflects total activity across all pairs on that exchange, not the depth of the specific pool you need. A smaller DEX can have a deeper pool for your exact pair."}}, {"@type": "Question", "name": "What is slippage and why does it matter?", "acceptedAnswer": {"@type": "Answer", "text": "Slippage is the difference between the quoted price and the price you actually receive once your order moves the pool. Deeper pools move less per trade, which keeps slippage lower."}}, {"@type": "Question", "name": "Is it safe to connect my wallet to an exchange found through rankings?", "acceptedAnswer": {"@type": "Answer", "text": "Treat it the same as any DEX: verify the contract address through a source such as Etherscan, grant only the approval your trade needs, and never share your seed phrase anywhere."}}, {"@type": "Question", "name": "Can I compare the same DEX across different chains?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A single exchange brand often appears multiple times in the rankings, once per chain it is deployed on, because liquidity and pricing differ by deployment even under the same name."}}]}]}</script>
 <style>
-:root {
-  color-scheme: dark;
-  --bg: #0a0e14;
-  --surface: #10161f; --panel: #131b26; --raised: #1a232f; --raised-2: #212c3a;
-  --line: rgba(255,255,255,.09); --line-2: rgba(255,255,255,.17);
-  --ink: #f3f7fc; --text: #c4cdd9; --muted: #8b97a6; --faint: #6b7686;
-  --accent: #f472b6; --accent-2: #db2777; --accent-3: #f9a8d4;
-  --accent-soft: rgba(244,114,182,.12); --accent-line: rgba(244,114,182,.35); --accent-glow: rgba(244,114,182,.45);
-  --warn: #f59e0b; --warn-soft: rgba(245,158,11,.10); --warn-line: rgba(245,158,11,.45);
-  --cta: #f472b6; --cta-2: #db2777; --cta-ink: #04140a;
-  --r-sm: 10px; --r-md: 14px; --r-lg: 16px; --r-xl: 22px;
-  --mono: ui-monospace, "SF Mono", SFMono-Regular, "Roboto Mono", Menlo, Consolas, monospace;
-  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --ease: cubic-bezier(0.22, 0.7, 0.24, 1);
+:root{--bg:#09100E;--surface:#12201B;--text:#E7F3EC;--muted:#83968C;--accent:#2DD4A7;--accent-ink:#04201A;--radius:16px;--display:"Manrope";--body:"Manrope"}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { margin: 0; min-width: 320px; overflow-x: hidden; color: var(--text); background: var(--bg); background-image: radial-gradient(1100px 620px at 80% -8%, rgba(244,114,182,.10), transparent 60%), radial-gradient(900px 500px at 8% 4%, rgba(219,39,119,.06), transparent 55%); background-attachment: fixed; font-family: var(--font); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
-:focus-visible { outline: 2px solid var(--accent-3); outline-offset: 3px; border-radius: 10px; }
-.skip { position: absolute; left: -999px; }
-.skip:focus { left: 12px; top: 12px; z-index: 99; padding: 10px 16px; border-radius: 10px; background: var(--accent); color: var(--cta-ink); font-weight: 800; }
-.topbar { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap; padding: 12px clamp(16px, 4vw, 30px); background: rgba(10,14,20,.72); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px) saturate(140%); -webkit-backdrop-filter: blur(12px) saturate(140%); }
-.topbar-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
-.topbar-logo { width: 40px; height: 40px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 11px; background: var(--raised); box-shadow: inset 0 0 0 1px var(--line-2); }
-.topbar-logo img { width: 24px; height: 24px; border-radius: 7px; }
-h1.wordmark { margin: 0; font-size: 18px; font-weight: 850; letter-spacing: -0.03em; color: var(--ink); line-height: 1; white-space: nowrap; }
-.wordmark .tld { color: var(--accent-3); }
-.topbar-right { display: flex; align-items: center; gap: 10px 18px; flex-wrap: wrap; }
-.ticker { display: flex; align-items: center; flex-wrap: wrap; gap: 3px 16px; min-width: 0; }
-.tick { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; color: var(--faint); font-size: 11.5px; font-weight: 600; }
-.tick b { color: var(--muted); font-family: var(--mono); font-size: 12px; font-weight: 600; }
-.tick .ext { color: var(--faint); font-size: 10px; }
-.tick:hover { color: var(--muted); } .tick:hover b, .tick:hover .ext { color: var(--accent-3); }
-.nav-cta { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 0 18px; border-radius: 12px; background: var(--accent); color: var(--cta-ink); font-size: 13.5px; font-weight: 800; box-shadow: 0 6px 18px -6px var(--accent-glow); transition: transform .16s var(--ease), box-shadow .16s var(--ease), filter .16s var(--ease); }
-.nav-cta:hover { transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 12px 28px -8px var(--accent-glow); }
-.hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 4vw, 56px); align-items: center; width: min(1160px, 100%); margin: 0 auto; padding: clamp(34px, 7vh, 84px) clamp(16px, 4vw, 30px) clamp(30px, 5vh, 60px); }
-.hero-l { min-width: 0; }
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); color: var(--accent-3); font-size: 12px; font-weight: 750; }
-.eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-3); box-shadow: 0 0 0 4px var(--accent-soft); animation: pulse 2.4s var(--ease) infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
-@media (prefers-reduced-motion: reduce){ .eyebrow .dot{animation:none} }
-.hero-h { margin: 18px 0 0; font-size: clamp(2.15rem, 5.3vw, 3.7rem); line-height: 1.04; font-weight: 850; letter-spacing: -0.035em; color: var(--ink); }
-.hero-h .grad { background: linear-gradient(100deg, var(--accent-3), #fbcfe8 55%, var(--accent)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
-.hero-lead { margin: 18px 0 0; max-width: 50ch; font-size: 16.5px; line-height: 1.6; color: var(--text); }
-.hero-lead strong { color: var(--ink); font-weight: 700; }
-.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 0; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 52px; border-radius: 14px; font-weight: 800; font-size: 15.5px; cursor: pointer; border: 0; transition: transform .16s var(--ease), box-shadow .16s var(--ease), filter .16s var(--ease), border-color .16s var(--ease); }
-.btn-primary { padding: 0 26px; color: var(--cta-ink); background: linear-gradient(135deg, var(--accent-3), var(--accent) 55%, var(--accent-2)); box-shadow: 0 12px 30px -8px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,.35); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 46px -10px var(--accent-glow); filter: brightness(1.04); }
-.btn-primary .go { transition: transform .18s var(--ease); }
-.btn-primary:hover .go { transform: translate(2px,-2px); }
-.btn-ghost { padding: 0 22px; color: var(--ink); background: rgba(255,255,255,.03); border: 1px solid var(--line-2); }
-.btn-ghost:hover { border-color: var(--accent-line); color: var(--accent-3); }
-.trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 26px 0 0; }
-.trust-badge { display: flex; align-items: center; gap: 10px; padding: 12px 13px; border: 1px solid var(--line); border-radius: var(--r-md); background: rgba(255,255,255,.02); }
-.trust-badge .tb-ico { width: 30px; height: 30px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 9px; background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent-line); }
-.trust-badge .tb-ico svg { width: 16px; height: 16px; color: var(--accent-3); }
-.trust-badge b { display: block; color: var(--ink); font-size: 13px; font-weight: 750; line-height: 1.2; }
-.trust-badge span { display: block; color: var(--faint); font-size: 10.5px; font-weight: 600; margin-top: 2px; }
-@media (max-width: 720px){ .trust { grid-template-columns: 1fr 1fr; } }
-.swap-wrap { position: relative; }
-.swap-wrap::before { content:""; position:absolute; inset:-1px; border-radius: 26px; background: linear-gradient(160deg, var(--accent-line), transparent 45%); opacity:.7; z-index:0; }
-.swap-card { position: relative; z-index: 1; border: 1px solid var(--line-2); border-radius: 24px; background: linear-gradient(180deg, var(--panel), var(--surface)); padding: 18px; box-shadow: 0 40px 90px -34px rgba(0,0,0,.75); }
-.card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; padding: 0 2px; }
-.card-title { margin: 0; font-size: 15px; font-weight: 800; color: var(--ink); }
-.preview-tag { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); color: var(--accent-3); font-size: 10px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
-.preview-tag > span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-3); box-shadow: 0 0 0 3px var(--accent-soft); }
-.leg { border: 1px solid var(--line); border-radius: 16px; background: var(--bg); padding: 14px 15px; transition: border-color .16s var(--ease); }
-.leg:hover, .leg:focus-within { border-color: var(--line-2); }
-.leg-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.leg-cap { font-size: 12px; font-weight: 650; color: var(--muted); }
-.leg-bal { font-size: 11.5px; color: var(--faint); font-weight: 600; }
-.leg-body { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.amount { font-family: var(--mono); font-size: 1.9rem; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-.leg-body .amount.dim { color: var(--faint); }
-.asset { display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; min-height: 44px; padding: 6px 12px 6px 6px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--raised); color: var(--ink); font-size: 15px; font-weight: 800; cursor: pointer; transition: border-color .16s var(--ease), background-color .16s var(--ease); }
-.asset:hover { border-color: var(--accent-line); background: var(--raised-2); }
-.asset .tok { width: 28px; height: 28px; flex: 0 0 auto; border-radius: 50%; overflow: hidden; display: grid; place-items: center; background: #fff; box-shadow: 0 0 0 1px var(--line-2); }
-.asset .tok img { width: 28px; height: 28px; }
-.asset .chev-sm { width: 15px; height: 15px; color: var(--muted); }
-.swap-arrow { position: relative; z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; margin: -14px auto; border: 4px solid var(--panel); border-radius: 14px; background: var(--raised); color: var(--accent-3); cursor: pointer; box-shadow: 0 0 0 1px var(--line-2); transition: transform 240ms var(--ease), background-color .16s var(--ease), color .16s var(--ease); }
-.swap-arrow svg { width: 18px; height: 18px; }
-.swap-arrow:hover { transform: rotate(180deg); background: var(--accent); color: var(--cta-ink); }
-.route-panel { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.02); }
-.route-info b { display: block; color: var(--ink); font-size: 13.5px; font-weight: 750; }
-.route-info span { display: block; margin-top: 2px; color: var(--faint); font-size: 11.5px; }
-.route-tok { display: inline-flex; align-items: center; gap: 7px; color: var(--text); font-size: 13px; font-weight: 700; white-space: nowrap; }
-.route-tok .tok { width: 22px; height: 22px; border-radius: 50%; overflow: hidden; background: #fff; display: grid; place-items: center; box-shadow: 0 0 0 1px var(--line-2); }
-.route-tok .tok img { width: 22px; height: 22px; }
-.route-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 4px 2px; border-top: 1px solid var(--line); margin-top: 10px; }
-.route-row span { font-size: 10.5px; font-weight: 750; letter-spacing: 0.07em; text-transform: uppercase; color: var(--faint); }
-.route-row b { color: var(--text); font-size: 12.5px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.swap-cta { display: flex; align-items: center; justify-content: center; gap: 9px; margin-top: 16px; min-height: 54px; border-radius: 15px; color: var(--cta-ink); background: linear-gradient(135deg, var(--accent-3), var(--accent) 55%, var(--accent-2)); font-size: 16.5px; font-weight: 850; box-shadow: 0 16px 34px -12px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,.35); transition: filter 150ms var(--ease), transform 150ms var(--ease), box-shadow .16s var(--ease); }
-.swap-cta:hover { filter: brightness(1.05); transform: translateY(-2px); box-shadow: 0 22px 50px -12px var(--accent-glow); }
-.swap-cta .cta-go { transition: transform 0.18s var(--ease); }
-.swap-cta:hover .cta-go { transform: translateX(3px); }
-.swap-foot { text-align: center; margin: 12px 2px 0; font-size: 11px; color: var(--faint); }
-@media (max-width: 900px){ .hero { grid-template-columns: 1fr; gap: 30px; } .swap-wrap { max-width: 460px; margin: 0 auto; width: 100%; } }
-.content { width: min(1160px, 100%); margin: 0 auto; padding: clamp(30px, 5vh, 60px) clamp(16px, 4vw, 30px) 80px; }
-.section-intro { max-width: 760px; margin: 0 auto clamp(22px, 4vh, 40px); }
-.section-intro p { margin: 0 0 14px; font-size: 16px; line-height: 1.7; color: var(--text); }
-.section-intro p strong { color: var(--ink); font-weight: 700; }
-.docs { display: grid; grid-template-columns: 236px minmax(0,1fr); gap: clamp(26px, 4vw, 56px); align-items: start; }
-.toc { position: sticky; top: 76px; align-self: start; max-height: calc(100dvh - 100px); overflow: auto; }
-.toc-h { margin: 0 0 10px; font-size: 10.5px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); padding-left: 13px; }
-.toc a { display: block; min-height: 34px; padding: 8px 13px; border-left: 2px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 650; line-height: 1.3; transition: color .15s var(--ease), border-color .15s var(--ease); }
-.toc a:hover { color: var(--ink); }
-.toc a.active { color: var(--accent-3); border-left-color: var(--accent); font-weight: 800; }
-.doc-main { min-width: 0; }
-.sec { border: 1px solid var(--line); border-radius: 18px; background: var(--panel); margin: 0 0 14px; scroll-margin-top: 82px; box-shadow: 0 1px 3px rgba(0,0,0,.3); transition: box-shadow .24s var(--ease), border-color .24s var(--ease); }
-.sec:hover { border-color: var(--line-2); }
-.sec[open] { border-color: var(--accent-line); box-shadow: 0 20px 50px -24px rgba(244,114,182,.28); }
-.sec > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: clamp(16px,2.5vh,22px) clamp(16px,3vw,24px); border-radius: 18px; transition: background-color .16s var(--ease); }
-.sec > summary:hover { background: rgba(255,255,255,.03); }
-.sec > summary::-webkit-details-marker { display: none; }
-.sec > summary h2 { margin: 0; font-size: clamp(1.08rem,2.4vw,1.35rem); font-weight: 800; letter-spacing: -0.02em; color: var(--ink); }
-.chev { flex: 0 0 auto; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line-2); background: var(--raised); color: var(--accent-3); transition: transform .28s var(--ease), background-color .2s var(--ease), border-color .2s var(--ease); }
-.chev svg { width: 18px; height: 18px; }
-.sec[open] > summary .chev { transform: rotate(180deg); background: var(--accent-soft); border-color: var(--accent-line); }
-.sec-body { padding: 0 clamp(16px,3vw,24px) clamp(18px,3vh,26px); max-width: 74ch; }
-.sec[open] .sec-body { animation: drop .22s var(--ease); }
-@keyframes drop { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce){ .sec[open] .sec-body { animation: none; } .chev { transition: none; } }
-.sec-body p { margin: 0 0 13px; color: var(--text); }
-.sec-body p:last-child { margin-bottom: 0; }
-.sec-body strong { color: var(--ink); font-weight: 700; }
-.sec-body ul { margin: 0 0 4px; padding-left: 20px; }
-.sec-body li { margin-bottom: 8px; color: var(--text); }
-.sec-body li::marker { color: var(--accent-3); }
-.sec-body a { color: var(--accent-3); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: var(--accent-line); transition: color .15s var(--ease); }
-.sec-body a:hover { color: var(--accent); }
-.addr { font-family: var(--mono); font-size: 12.5px; color: var(--accent-3); word-break: break-all; }
-.notice { border: 1px solid var(--line); border-left: 4px solid var(--warn); border-radius: 14px; background: var(--warn-soft); margin: 0 0 12px; overflow: hidden; }
-.notice > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 14px 16px; }
-.notice > summary::-webkit-details-marker { display: none; }
-.notice .n-ico { width: 26px; height: 26px; flex: 0 0 auto; display: grid; place-items: center; color: var(--warn); }
-.notice .n-ico svg { width: 20px; height: 20px; }
-.notice .n-title { flex: 1 1 auto; color: var(--ink); font-weight: 750; font-size: 14.5px; }
-.notice .chev-w { flex: 0 0 auto; width: 30px; height: 30px; display: grid; place-items: center; color: var(--warn); transition: transform .26s var(--ease); }
-.notice .chev-w svg { width: 17px; height: 17px; }
-.notice[open] .chev-w { transform: rotate(180deg); }
-.notice .n-body { padding: 0 16px 16px 54px; color: var(--text); font-size: 13.5px; line-height: 1.66; }
-.notice .n-body strong { color: var(--ink); }
-@media (max-width: 560px){ .notice .n-body { padding-left: 16px; } }
-.qa { border: 1px solid var(--line); border-radius: 14px; background: var(--panel); margin: 0 0 10px; overflow: hidden; transition: border-color .18s var(--ease); }
-.qa:hover { border-color: var(--line-2); }
-.qa[open] { border-color: var(--accent-line); }
-.qa > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 56px; padding: 15px 18px; color: var(--ink); font-weight: 700; font-size: 14.5px; transition: background-color .16s var(--ease); }
-.qa > summary:hover { background: rgba(255,255,255,.03); }
-.qa > summary::-webkit-details-marker { display: none; }
-.qa .chev-q { flex: 0 0 auto; width: 26px; height: 26px; display: grid; place-items: center; color: var(--accent-3); transition: transform .24s var(--ease); }
-.qa .chev-q svg { width: 17px; height: 17px; }
-.qa[open] .chev-q { transform: rotate(180deg); }
-.qa .a { padding: 0 18px 16px; color: var(--text); font-size: 13.5px; line-height: 1.66; }
-.qa .a a { color: var(--accent-3); text-decoration: underline; text-underline-offset: 3px; }
-.field-notes { border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 16px; background: var(--panel); padding: clamp(20px,3vh,26px) clamp(18px,3vw,26px); margin: 16px 0 0; scroll-margin-top: 82px; }
-.field-notes h2 { margin: 0 0 12px; font-size: clamp(1.08rem,2.4vw,1.35rem); font-weight: 800; letter-spacing: -.02em; color: var(--ink); }
-.field-notes .fn-body { color: var(--text); font-size: 14px; line-height: 1.68; max-width: 74ch; }
-.field-notes .fn-body strong { color: var(--ink); font-weight: 700; }
-.field-notes .fn-body ul { margin: 8px 0; padding-left: 20px; }
-.field-notes .fn-body li { margin-bottom: 6px; }
-@media (max-width: 900px){
-  .docs { grid-template-columns: 1fr; gap: 0; }
-  .toc { position: sticky; top: 55px; z-index: 20; display: flex; gap: 8px; overflow-x: auto; max-height: none; background: rgba(10,14,20,.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 10px 2px; margin: 0 0 14px; border-bottom: 1px solid var(--line); }
-  .toc-h { display: none; }
-  .toc a { flex: 0 0 auto; white-space: nowrap; border-left: 0; border: 1px solid var(--line); border-radius: 999px; padding: 9px 15px; font-size: 12.5px; min-height: 40px; display: flex; align-items: center; }
-  .toc a.active { color: var(--accent-3); border-color: var(--accent); background: var(--accent-soft); }
+html {
+  min-width: 280px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
 }
-.site-foot { width: min(1160px, 100%); margin: 0 auto; padding: 26px clamp(16px,4vw,30px) 48px; border-top: 1px solid var(--line); color: var(--faint); font-size: 12.5px; line-height: 1.65; }
-.site-foot .wrap { max-width: 88ch; }
-.site-foot a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
-.site-foot a:hover { color: var(--accent-3); }
-html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
-html.js .reveal.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce){ html.js .reveal { opacity: 1; transform: none; transition: none; } }
-@media (max-width: 560px){ .ticker { display: none; } .amount { font-size: 1.6rem; } .hero { padding-top: 26px; } }
+body {
+  margin: 0;
+  color: var(--text);
+  background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 42rem), var(--bg);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  color: var(--accent-ink);
+  background: var(--accent);
+}
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+a:hover {
+  color: color-mix(in srgb, var(--accent) 76%, var(--text));
+}
+a:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
+img,
+svg {
+  max-width: 100%;
+  vertical-align: middle;
+}
+img {
+  height: auto;
+}
+input,
+output {
+  font-family: var(--body);
+}
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text);
+  font-family: var(--display);
+  text-wrap: balance;
+}
+p,
+ul,
+ol,
+blockquote,
+figure {
+  margin: 0;
+}
+.c5374ef {
+  width: min(100% - 4rem, 1120px);
+  margin-inline: auto;
+}
+.cdf9e9d {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 92px;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+}
+.c032284 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 750;
+  letter-spacing: -0.045em;
+}
+.cc0593b {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 23%, transparent);
+  border-radius: calc(var(--radius) * 0.55);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.c6ec6c9 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-height: 42px;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 14%, transparent);
+  border-radius: calc(var(--radius) * 0.65);
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  font-size: 0.85rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+.c6ec6c9:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+}
+.c656090 {
+  padding-block: 1.4rem 0.5rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.cad16c3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.7rem;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  list-style: none;
+}
+.cad16c3 ol,
+.cad16c3 ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cad16c3 li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.cad16c3 li + li::before {
+  content: "/";
+  color: color-mix(in srgb, var(--muted) 60%, transparent);
+}
+.cad16c3 a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.cad16c3 a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.cad16c3 [aria-current="page"] {
+  color: var(--text);
+}
+.ce50974 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: clamp(2.5rem, 6vw, 5rem);
+  text-align: center;
+}
+.ceefdd2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  border-radius: calc(var(--radius) * 2);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.ceefdd2::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.ce50974 h1 {
+  max-width: 960px;
+  margin: 0;
+  font-size: clamp(2.6rem, 6.1vw, 5.2rem);
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -0.06em;
+}
+.ce50974 h1 em,
+.ce50974 h1 strong,
+.ce50974 h1 span {
+  color: var(--accent);
+}
+.ce50974 h1 em {
+  font-style: normal;
+}
+.c19d4d7 {
+  max-width: 720px;
+  margin: 1.5rem auto 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.65vw, 1.15rem);
+  line-height: 1.85;
+  text-wrap: pretty;
+}
+.c110fcf {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  margin-top: clamp(2rem, 4vw, 3.2rem);
+  padding: clamp(1.2rem, 3.5vw, 2.6rem);
+  border: 1px solid color-mix(in srgb, var(--accent) 19%, var(--surface));
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 5%, var(--surface)), var(--surface) 48%);
+  box-shadow: 0 24px 65px -24px color-mix(in srgb, var(--text) 21%, transparent), 0 4px 14px -7px color-mix(in srgb, var(--accent) 16%, transparent);
+  text-align: left;
+}
+.c110fcf::before {
+  position: absolute;
+  inset: -1px 12% auto;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 0%, transparent), color-mix(in srgb, var(--accent) 65%, transparent), color-mix(in srgb, var(--accent) 0%, transparent));
+}
+.c52b26e {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1rem;
+  margin-bottom: 1.5rem;
+}
+.c52b26e h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+.c52b26e p {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.cc1708c {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 1rem;
+}
+.cfa430d {
+  min-width: 0;
+  padding: 1.4rem 1.5rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  border-radius: calc(var(--radius) * 0.7);
+  background: color-mix(in srgb, var(--bg) 65%, var(--surface));
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.cfa430d:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 9%, transparent);
+}
+.c461740 {
+  border-color: color-mix(in srgb, var(--accent) 18%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, var(--surface)), color-mix(in srgb, var(--accent) 3%, var(--surface)));
+}
+.c929e5a {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 550;
+}
+#amount {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 0%, transparent);
+  font-family: var(--body);
+  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+#amount::-webkit-inner-spin-button,
+#amount::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+#amount::placeholder {
+  color: var(--muted);
+  opacity: 0.65;
+}
+#amount:focus-visible {
+  outline-offset: 3px;
+  outline-width: 2px;
+}
+#amount[aria-invalid="true"] {
+  text-decoration: underline wavy;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+#received {
+  display: block;
+  min-height: 1.3em;
+  color: var(--text);
+  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+  overflow-wrap: anywhere;
+}
+.ccc8e0f {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.73rem;
+  line-height: 1.5;
+}
+.c941ff9 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-inline: 0.15rem;
+}
+.c8c97aa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  width: 48px;
+  min-height: 48px;
+  padding: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  border-radius: calc(var(--radius) * 0.55);
+  background: var(--surface);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--text) 4%, transparent);
+  font-size: 0.65rem;
+  line-height: 1.2;
+  text-align: center;
+}
+.c8c97aa img,
+.c8c97aa svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.cad73b2 {
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+.c222a23 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.55fr);
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+  margin-top: 1.4rem;
+}
+.cc0201c {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  font-size: 0.8rem;
+}
+.cc0201c > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.cc0201c dt {
+  color: var(--muted);
+}
+.cc0201c dd {
+  margin: 0;
+  color: var(--text);
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.cf4db6d {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 56px;
+  padding: 0.9rem 1.3rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 85%, var(--text));
+  border-radius: calc(var(--radius) * 0.65);
+  color: var(--accent-ink);
+  background: linear-gradient(120deg, var(--accent), color-mix(in srgb, var(--accent) 85%, var(--text)));
+  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--accent) 45%, transparent);
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+.cf4db6d:hover {
+  transform: translateY(-2px);
+  color: var(--accent-ink);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 94%, var(--text)), color-mix(in srgb, var(--accent) 78%, var(--text)));
+  box-shadow: 0 12px 28px -9px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+.cf4db6d:active {
+  transform: translateY(0);
+}
+.cf4db6d span:last-child {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.c582c0f {
+  min-height: 1.5em;
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.c582c0f[data-invalid="true"] {
+  color: var(--text);
+  font-weight: 600;
+}
+.c9af5b9 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-block: 1.6rem 4.5rem;
+  padding: 1rem 0;
+  border-block: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  list-style: none;
+}
+.c9af5b9 li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+.c9af5b9 li + li {
+  border-left: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+}
+.c9af5b9 li::before {
+  content: "✓";
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+.cfe83a7 {
+  margin-bottom: 4rem;
+  padding: clamp(1.25rem, 3.5vw, 2.75rem);
+  border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 12px 35px -22px color-mix(in srgb, var(--text) 18%, transparent);
+}
+.c2d132c {
+  margin: 0 0 1.6rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+.ca443a5 {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+.c6fbec6 {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  text-align: left;
+}
+.c6fbec6 caption {
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: left;
+}
+.c6fbec6 th,
+.c6fbec6 td {
+  padding: 1.05rem 1.2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  vertical-align: top;
+}
+.c6fbec6 th {
+  width: 31%;
+  color: var(--muted);
+  font-weight: 500;
+}
+.c6fbec6 td {
+  font-weight: 550;
+}
+.c6fbec6 tr:nth-child(odd) {
+  background: color-mix(in srgb, var(--accent) 3%, var(--surface));
+}
+.c6fbec6 tr:last-child > * {
+  border-bottom: 0;
+}
+.c6fbec6 thead th {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  font-weight: 650;
+}
+.cce5077 {
+  width: min(100%, 860px);
+  margin-inline: auto;
+}
+.c89626b {
+  margin-block: 0 3.6rem;
+  padding-bottom: 3.2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  scroll-margin-top: 2rem;
+}
+.c930cb1 {
+  margin: 0 0 1.25rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+.c67a61a {
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+.c67a61a > * + * {
+  margin-top: 1.25rem;
+}
+.c67a61a h3,
+.c67a61a h4 {
+  margin-block: 2rem 0.75rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+.c67a61a h4 {
+  font-size: 1.1rem;
+}
+.c67a61a strong,
+.caebb40 strong {
+  color: var(--text);
+  font-weight: 650;
+}
+.c67a61a ul,
+.c67a61a ol,
+.caebb40 ul,
+.caebb40 ol {
+  padding-left: 1.4rem;
+}
+.c67a61a li,
+.caebb40 li {
+  padding-left: 0.3rem;
+}
+.c67a61a li + li,
+.caebb40 li + li {
+  margin-top: 0.65rem;
+}
+.c67a61a li::marker,
+.caebb40 li::marker {
+  color: var(--accent);
+}
+.c67a61a li > ul,
+.c67a61a li > ol {
+  margin-top: 0.65rem;
+}
+.c67a61a blockquote {
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 calc(var(--radius) * 0.45) calc(var(--radius) * 0.45) 0;
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+}
+.c67a61a blockquote p + p {
+  margin-top: 0.8rem;
+}
+.c67a61a table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+  border-radius: calc(var(--radius) * 0.6);
+  background: var(--surface);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  text-align: left;
+  overscroll-behavior-inline: contain;
+}
+.c67a61a table th,
+.c67a61a table td {
+  min-width: 8rem;
+  padding: 0.95rem 1.15rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  vertical-align: top;
+}
+.c67a61a table th {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  font-weight: 600;
+}
+.c67a61a table tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--bg) 65%, var(--surface));
+}
+.c67a61a table tr:last-child td {
+  border-bottom: 0;
+}
+.c67a61a table caption {
+  padding: 0.85rem 1.15rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: left;
+}
+.c67a61a code,
+.c67a61a pre {
+  border-radius: calc(var(--radius) * 0.3);
+  color: var(--text);
+  background: color-mix(in srgb, var(--text) 5%, var(--surface));
+  font-family: var(--body);
+  font-size: 0.9em;
+}
+.c67a61a code {
+  padding: 0.15em 0.4em;
+}
+.c67a61a pre {
+  overflow-x: auto;
+  padding: 1.2rem;
+}
+.c67a61a pre code {
+  padding: 0;
+  background: color-mix(in srgb, var(--surface) 0%, transparent);
+}
+.c67a61a figure img {
+  display: block;
+  border-radius: calc(var(--radius) * 0.7);
+}
+.c67a61a figcaption {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.c6d784d {
+  margin-block: 1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  border-radius: calc(var(--radius) * 0.7);
+  background: var(--surface);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.c6d784d:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.c6d784d[open] {
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  box-shadow: 0 8px 25px -14px color-mix(in srgb, var(--text) 15%, transparent);
+}
+.c0b6361 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.3rem 1.5rem;
+  border-radius: calc(var(--radius) * 0.7);
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 1.04rem;
+  font-weight: 550;
+  line-height: 1.5;
+  list-style: none;
+  cursor: pointer;
+}
+.c0b6361::-webkit-details-marker {
+  display: none;
+}
+.c0b6361::after {
+  display: grid;
+  flex: 0 0 27px;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  content: "+";
+  border-radius: 50%;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 9%, var(--surface));
+  font-family: var(--body);
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.c6d784d[open] > .c0b6361::after {
+  content: "−";
+}
+.caebb40 {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+.caebb40 > * + * {
+  margin-top: 1rem;
+}
+.c046fb5 {
+  margin-top: 4rem;
+  padding: 2.2rem 0 2.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+}
+.c046fb5 .c2d132c {
+  margin-bottom: 1.2rem;
+  font-size: 1.35rem;
+}
+.c295bca {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.c687193 {
+  min-width: 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  border-radius: calc(var(--radius) * 0.45);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface) 70%, var(--bg));
+  font-size: 0.82rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.c687193 a,
+a.c687193 {
+  color: var(--text);
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.c687193 a:hover,
+a.c687193:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+.ca5e8de {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: 1rem;
+  padding-block: 1.7rem 2.2rem;
+  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.cfa5e12 {
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.ce5b106 span {
+  color: var(--text);
+}
+@media (min-width: 1280px) {
+  .ce50974 {
+    padding-top: 5.2rem;
+  }
+  .c110fcf {
+    margin-top: 3.4rem;
+  }
+  .cfa430d {
+    padding-block: 1.6rem 1.3rem;
+  }
+}
+@media (max-width: 900px) {
+  .c5374ef {
+    width: min(100% - 3rem, 1120px);
+  }
+  .cc1708c {
+    gap: 0.65rem;
+  }
+  .cfa430d {
+    padding: 1.1rem;
+  }
+  .c941ff9 {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .c8c97aa {
+    width: 38px;
+    min-height: 38px;
+  }
+  .c8c97aa img,
+  .c8c97aa svg {
+    width: 25px;
+    height: 25px;
+  }
+  .cad73b2 {
+    line-height: 1;
+  }
+  .c9af5b9 {
+    margin-bottom: 3rem;
+  }
+}
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 1rem;
+  }
+  .c5374ef {
+    width: calc(100% - 2rem);
+  }
+  .cdf9e9d {
+    min-height: 76px;
+    gap: 0.75rem;
+  }
+  .c032284 {
+    gap: 0.5rem;
+    font-size: 1.08rem;
+  }
+  .c6ec6c9 {
+    min-height: 40px;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.78rem;
+  }
+  .c656090 {
+    padding-top: 1rem;
+  }
+  .ce50974 {
+    padding-top: 2.4rem;
+  }
+  .ce50974 h1 {
+    font-size: clamp(2.25rem, 10vw, 3.6rem);
+    letter-spacing: -0.05em;
+  }
+  .c19d4d7 {
+    margin-top: 1.1rem;
+    line-height: 1.75;
+  }
+  .c110fcf {
+    padding: 1.1rem;
+  }
+  .c52b26e {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1.1rem;
+  }
+  .cc1708c {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+  .cfa430d {
+    padding: 1.2rem;
+  }
+  #amount,
+  #received {
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+  }
+  .c941ff9 {
+    flex-direction: row;
+    gap: 0.8rem;
+    padding-block: 0.1rem;
+  }
+  .c8c97aa {
+    width: 40px;
+    min-height: 40px;
+  }
+  .c222a23 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  .cc0201c {
+    font-size: 0.78rem;
+  }
+  .cf4db6d {
+    min-height: 54px;
+  }
+  .c9af5b9 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    margin-block: 1.4rem 2.6rem;
+    padding-block: 0.5rem;
+  }
+  .c9af5b9 li {
+    justify-content: flex-start;
+    padding: 0.7rem 1rem;
+  }
+  .c9af5b9 li + li {
+    border-top: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
+    border-left: 0;
+  }
+  .cfe83a7 {
+    margin-bottom: 2.8rem;
+    padding: 1.2rem;
+  }
+  .c2d132c {
+    margin-bottom: 1.2rem;
+  }
+  .c6fbec6 {
+    font-size: 0.82rem;
+  }
+  .c6fbec6 th,
+  .c6fbec6 td {
+    padding: 0.8rem 0.6rem;
+  }
+  .c6fbec6 th {
+    width: 38%;
+  }
+  .c89626b {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.3rem;
+  }
+  .c67a61a {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+  .c67a61a h3 {
+    font-size: 1.2rem;
+  }
+  .c67a61a blockquote {
+    padding: 1rem 1.15rem;
+  }
+  .c0b6361 {
+    gap: 0.9rem;
+    padding: 1.1rem;
+    font-size: 0.98rem;
+  }
+  .caebb40 {
+    padding: 0 1.1rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  .c046fb5 {
+    margin-top: 2.6rem;
+    padding-block: 1.8rem;
+  }
+  .ca5e8de {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+    padding-block: 1.4rem 1.8rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none;
+    animation: none;
+  }
+  .cf4db6d:hover {
+    transform: none;
+  }
+}
+@media print {
+  body {
+    background: var(--bg);
+  }
+  .c5374ef,
+  .cce5077 {
+    width: 100%;
+  }
+  .c6ec6c9,
+  .cf4db6d {
+    display: none;
+  }
+  .ce50974 {
+    padding-top: 1.5rem;
+  }
+  .ce50974 h1 {
+    font-size: 2.6rem;
+  }
+  .c110fcf,
+  .cfe83a7,
+  .c6d784d {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+  .c67a61a h3,
+  .c930cb1 {
+    break-after: avoid;
+  }
+  .c67a61a table {
+    display: table;
+    overflow: visible;
+  }
+}
 </style>
-<meta content="website" property="og:type"/><meta content="https://dappradar-dex.github.io/" property="og:url"/>
-<meta content="DappRadar DEX — Track DEX Activity, Tokens &amp; Volume" property="og:title"/>
-<meta content="Use DappRadar's DEX and token explorer to track decentralized-exchange activity, token prices, trading volume and rankings across many blockchains." property="og:description"/>
-<meta content="DappRadar DEX" property="og:site_name"/><meta content="https://dappradar-dex.github.io/radar.png" property="og:image"/>
-<meta content="summary_large_image" name="twitter:card"/><meta content="DappRadar DEX — Track DEX Activity, Tokens &amp; Volume" name="twitter:title"/>
-<meta content="Track DEX activity, token prices, volume and rankings across chains with DappRadar. Informational, not affiliated with DappRadar." name="twitter:image"/>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://dappradar-dex.github.io/#website","url":"https://dappradar-dex.github.io/","name":"DappRadar DEX","inLanguage":"en"},{"@type":"WebPage","@id":"https://dappradar-dex.github.io/#webpage","url":"https://dappradar-dex.github.io/","name":"DappRadar DEX — Track DEX Activity, Tokens & Volume","description":"Use DappRadar's DEX and token explorer to track decentralized-exchange activity, token prices, trading volume and rankings across many blockchains.","isPartOf":{"@id":"https://dappradar-dex.github.io/#website"},"inLanguage":"en","dateModified":"2026-08-24"},{"@type":"FAQPage","@id":"https://dappradar-dex.github.io/#faq","mainEntity":[{"@type":"Question","name":"What is DappRadar DEX, and is this the official site?","acceptedAnswer":{"@type":"Answer","text":"DappRadar DEX here refers to using DappRadar — a dapp analytics platform — to track decentralized-exchange activity, token prices, trading volume and rankings across chains. This is an independent, informational page and is not affiliated with or endorsed by DappRadar. It does not execute trades."}},{"@type":"Question","name":"What can I track with DappRadar's DEX explorer?","acceptedAnswer":{"@type":"Answer","text":"You can track DEX trading activity such as volume, active traders and transaction counts, plus token prices, market data and rankings across many blockchains. It is a research and analytics tool for comparing dapps, DEXs and tokens, not a place to swap."}},{"@type":"Question","name":"Does DappRadar let me swap tokens?","acceptedAnswer":{"@type":"Answer","text":"DappRadar is primarily analytics: it shows DEX and token data rather than acting as an exchange. To actually swap, you use a DEX directly with your own wallet. This informational page mirrors that analytics purpose and does not execute trades."}},{"@type":"Question","name":"Which blockchains does DappRadar cover?","acceptedAnswer":{"@type":"Answer","text":"DappRadar aggregates activity across many blockchains, including Ethereum and its layer-2 rollups and other layer-1 networks. Coverage and available metrics vary by chain and by dapp, so confirm details in the live explorer."}},{"@type":"Question","name":"How accurate is DEX and token data?","acceptedAnswer":{"@type":"Answer","text":"Analytics platforms aggregate on-chain and market data, which can lag, differ between sources, or be distorted by wash trading and low liquidity. Treat rankings and volume as indicators, cross-check multiple sources, and verify token contracts before acting. This is not financial advice."}},{"@type":"Question","name":"What is the RADAR token?","acceptedAnswer":{"@type":"Answer","text":"RADAR is the utility and governance token associated with the DappRadar ecosystem, an ERC-20 on Ethereum with bridged versions on some networks. Holding it is not required to use DEX and token analytics, and this page does not sell or distribute it."}}]}]}
-</script>
-<link href="dashboard/index.html" rel="prefetch"/></head>
+</head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="topbar">
-<div class="topbar-left">
-<span class="topbar-logo"><img alt="DappRadar DEX" height="24" src="radar.png" width="24"/></span>
-<h1 class="wordmark">DappRadar<span class="tld"> DEX</span></h1>
+<div class="c5374ef">
+  <header class="cdf9e9d">
+    <div class="c032284"><span class="cc0593b" aria-hidden="true">⇄</span><span>Exchange</span></div>
+    <a class="c6ec6c9" href="dashboard/">Open app <span aria-hidden="true">↗</span></a>
+  </header>
+  <div class="c656090"><nav class="cad16c3" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>DappRadar DEX</span></nav></div>
+  <section class="ce50974" aria-labelledby="hero-title">
+    <div class="ceefdd2">A direct route to your next asset</div>
+    <h1 id="hero-title">DappRadar <em>DEX</em>.</h1>
+    <p class="c19d4d7">A DappRadar DEX is any decentralized exchange you find and compare on DappRadar before you ever connect a wallet to it. Rather than picking a swap venue by name recognition alone, you open the rankings, sort by trading volume or total value locked, and see which exchange actually has the liquidity your trade needs. The comparison happens off-chain, inside the dashboard; the swap itself — say, ETH into USDC — still runs on the exchange's own smart contract, self-custody, once you decide where to send it.</p>
+    <div class="c110fcf" role="group" aria-labelledby="exchange-title">
+      <div class="c52b26e">
+        <h2 id="exchange-title">Your exchange</h2>
+        <p>One route. Every detail in view.</p>
+      </div>
+      <div class="cc1708c">
+        <div class="cfa430d">
+          <label class="c929e5a" for="amount">You pay</label>
+          <input id="amount" name="amount" type="number" inputmode="decimal" min="1" max="1000000" step="any" value="1000" required aria-describedby="amount-help amount-message" aria-invalid="false">
+          <span class="ccc8e0f" id="amount-help">From 1 to 1,000,000 units</span>
+        </div>
+        <div class="c941ff9" role="group" aria-label="Exchange route">
+          <span class="c8c97aa"><img src="assets/tokens/eth.svg" alt="Ethereum" width="28" height="28"></span>
+          <span class="cad73b2" role="img" aria-label="to">→</span>
+          <span class="c8c97aa"><img src="assets/tokens/usdc.svg" alt="USD Coin" width="28" height="28"></span>
+        </div>
+        <div class="cfa430d c461740">
+          <label class="c929e5a" for="received">You receive</label>
+          <output id="received" for="amount" aria-live="polite" aria-atomic="true">—</output>
+          <span class="ccc8e0f">After network fee · destination units</span>
+        </div>
+      </div>
+      <div class="c222a23">
+        <dl class="cc0201c">
+          <div><dt>Rate</dt><dd><output id="rate" for="amount">—</output></dd></div>
+          <div><dt>Network fee</dt><dd><output id="network-fee" for="amount">—</output></dd></div>
+        </dl>
+        <a class="cf4db6d" href="dashboard/"><span>Continue to exchange</span><span aria-hidden="true">→</span></a>
+      </div>
+      <p class="c582c0f" id="amount-message" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+  <ul class="c9af5b9" aria-label="Exchange features">
+    <li>Non-custodial</li>
+    <li>On-chain</li>
+    <li>No sign-up</li>
+    <li>Transparent fees</li>
+  </ul>
+  <section class="cfe83a7" aria-labelledby="facts-title">
+    <h2 class="c2d132c" id="facts-title">Key facts</h2>
+    <div class="ca443a5" tabindex="0" role="region" aria-label="Key facts table"><table class="c6fbec6"><tbody><tr><th scope="row">What it is</th><td>An analytics dashboard that tracks decentralized exchanges</td></tr>
+<tr><th scope="row">Coverage</th><td>Hundreds of DEXs across dozens of blockchains</td></tr>
+<tr><th scope="row">Core metrics</th><td>Trading volume, TVL, active traders</td></tr>
+<tr><th scope="row">Custody</th><td>Self-custody — the dashboard does not hold funds</td></tr>
+<tr><th scope="row">Example pair</th><td>ETH to USDC</td></tr>
+<tr><th scope="row">Data source</th><td>On-chain activity, aggregated and refreshed continuously</td></tr></tbody></table></div>
+  </section>
+  <main class="cce5077" id="content">
+    <section class="c89626b"><h2 class="c930cb1">What DappRadar DEX Rankings Show You</h2><div class="c67a61a"><strong>A DappRadar DEX is any decentralized exchange tracked on DappRadar's dashboards, where trading volume, total value locked and active users are gathered from on-chain data so you can compare swap venues before you connect a wallet.</strong> Instead of guessing which exchange has enough liquidity for a trade, you open the <a href="https://dappradar.com/rankings/dexes" rel="nofollow noopener" target="_blank">DappRadar DEX rankings</a> page and see major decentralized exchanges ranked side by side, across Ethereum, Arbitrum, Base and dozens of other chains. A <a href="https://en.wikipedia.org/wiki/Decentralized_exchange" rel="nofollow noopener" target="_blank">decentralized exchange</a> lets two parties swap tokens directly from their own wallets through a smart contract, with no custodial order book and no account to open. DappRadar does not hold your funds or run the swap itself; it aggregates the public data each DEX produces on-chain and presents it as sortable tables, so the actual trade still happens on the exchange's own contract once you decide where to send it.<h3>Why Volume and TVL Are Tracked Together</h3>Volume tells you how much is actually trading right now; total value locked tells you how deep the pools behind that trading are. A DEX with high volume but thin TVL can still slip badly on a large order, while a DEX with large TVL and modest volume may offer a calmer, better-priced fill. Looking at both numbers together, rather than either alone, is the habit that separates a quick glance from a real comparison. Traders who check only one metric tend to be surprised later, either by a fill that moved the price more than expected or by a pool that turned out quieter than the volume chart implied.<h3>Chains and Pairs DappRadar Covers</h3>The rankings span Ethereum mainnet and most major layer-2 and alternative chains, with each DEX broken out by the chain it runs on. A single exchange brand, such as Uniswap, can appear multiple times — once per chain it is deployed on — because liquidity and pricing differ by deployment even under the same name. The same ETH-to-USDC pair can therefore show meaningfully different depth on one chain than on another, which is itself a reason to check the breakdown rather than assume a familiar brand behaves identically everywhere it is deployed.</div></section>
+<section class="c89626b"><h2 class="c930cb1">How DappRadar DEX Data Helps You Compare Swaps</h2><div class="c67a61a">Before entering an amount on any swap screen, a few minutes on DappRadar DEX tables can change which exchange you actually use. Sort the list by 24-hour volume to see which venues are seeing real trading right now, then cross-check total value locked to confirm that volume is backed by genuine liquidity rather than a short-lived spike. For a straightforward pair like ETH to USDC, the top few exchanges on any major chain usually offer comparable pricing, so the real question becomes which one has the deepest pool for the exact size of your order. Smaller or less common pairs show the gap more clearly: a DEX that ranks well overall can still have a shallow pool for one specific token, and the dashboard's per-pair breakdown is where that becomes visible before you sign anything. Rankings also move over time as incentives, new pools and token launches shift where traders actually send volume, so a venue worth using this month is not guaranteed to stay the best choice next month. Checking the numbers before each larger trade, rather than relying on a choice made once and never revisited, is what keeps the comparison useful rather than a one-time exercise.</div></section>
+<section class="c89626b"><h2 class="c930cb1">Reading DappRadar DEX Volume and TVL Tables</h2><div class="c67a61a">Each row in a DappRadar DEX table reduces a live exchange to three numbers that matter for a swap decision. Read them as a set, not in isolation — a high number in one column means little without the others for context. A venue with strong volume but a small user count, for instance, may be dominated by a handful of large traders rather than broad, organic demand, which can make its quoted price less stable than the headline number suggests.<table><thead><tr><th>Metric</th><th>What it measures</th><th>Why it matters for a swap</th></tr></thead><tbody><tr><td>24h Volume</td><td>Total value traded on the DEX in the last day</td><td>Shows whether a pool is actively used right now</td></tr><tr><td>TVL</td><td>Value of assets locked in the DEX's liquidity pools</td><td>Deeper pools generally mean less price impact</td></tr><tr><td>Users</td><td>Distinct wallets that traded recently</td><td>Flags whether activity is broad or concentrated</td></tr></tbody></table></div></section>
+<section class="c89626b"><h2 class="c930cb1">Choosing a DEX by Liquidity and Slippage</h2><div class="c67a61a">Once the rankings narrow your options to two or three exchanges, the deciding factor is almost always liquidity for your specific pair, not the exchange's overall rank. A DEX that tops the DappRadar DEX chart by total volume can still quote a worse price than a smaller one if its ETH-USDC pool happens to be shallower than you expect.<h3>What Slippage Actually Costs You</h3>Slippage is the gap between the price you see and the price you get once your trade actually moves the pool. On a deep pool, a modest ETH-to-USDC swap barely moves the price; on a thin one, the same size order can cost noticeably more than quoted. Most swap interfaces, including those built on <a href="https://docs.uniswap.org/" rel="nofollow noopener" target="_blank">Uniswap's documentation</a>, let you set a maximum slippage tolerance so the trade reverts rather than fills at a price worse than you accepted.<h3>Splitting Large Orders</h3>For a trade large relative to a pool's depth, splitting it across two or three transactions — or across two different DEXs ranked on DappRadar — often lands a better average price than pushing it through a single pool at once. This matters more as order size grows and matters very little for routine, small swaps. Watching how much the quoted price moves as you increase the entered amount, before signing anything, is itself a quick way to estimate how much a pool can absorb without meaningful slippage.</div></section>
+<section class="c89626b"><h2 class="c930cb1">Swapping ETH for USDC After Checking DappRadar DEX Stats</h2><div class="c67a61a">Once you have picked an exchange from the rankings, the swap itself follows the same short sequence every time.<ul><li>Open the DEX you selected from the DappRadar DEX comparison and connect your self-custody wallet.</li><li>Select ETH as the token you are sending and USDC as the token you want to receive.</li><li>Enter the amount and review the quoted rate, the price impact and the network fee before confirming anything.</li><li>Set a slippage tolerance that fits the pool's depth, tighter for deep pools and looser for thin ones.</li><li>Sign the swap transaction in your wallet and wait for it to confirm on-chain.</li><li>Confirm the USDC balance landed in your own wallet, not an intermediary account.</li></ul></div></section>
+<section class="c89626b"><h2 class="c930cb1">Self-Custody and Safety Using a DappRadar DEX</h2><div class="c67a61a">Every exchange you reach through DappRadar DEX rankings should be non-custodial: you connect a wallet, sign a transaction, and the swap settles directly between your address and the pool's smart contract. Nothing about comparing exchanges on a dashboard changes that — the risk, and the control, both stay with you at the moment you sign. A ranking can point you toward reputable, widely used venues, but it is not a substitute for reading what your wallet shows you before you approve it.<h3>Verify the Contract Before You Trust the Link</h3>Before approving a token or sending a swap, check the DEX's contract address against a trusted source such as <a href="https://etherscan.io/" rel="nofollow noopener" target="_blank">Etherscan</a> rather than trusting a search result or a link shared elsewhere. A rankings site points you toward reputable venues, but the final check on any address is still yours to make.<h3>Approvals Deserve the Same Care as the Swap</h3>Granting a limited token approval, sized to the trade you intend, limits what any single contract can ever move from your wallet. Reviewing and occasionally revoking old approvals costs a few minutes and removes standing risk that has nothing to do with how good a DEX's liquidity looks on paper.</div></section>
+<section class="c89626b"><h2 class="c930cb1">DappRadar DEX vs Trading on a Single Exchange</h2><div class="c67a61a">Going straight to one familiar exchange is faster, but it means trusting that its pool happens to be the best one for your pair on that day. Checking DappRadar DEX rankings first costs a few extra minutes and, for anything beyond a routine small swap, those minutes usually pay for themselves in a better fill. For a wider market view beyond any single ranking source, a protocol-level dashboard such as <a href="https://defillama.com/" rel="nofollow noopener" target="_blank">DefiLlama</a> offers a second read on the same liquidity, which is useful cross-checking before committing a larger trade. Neither tool replaces the final decision at the wallet; both simply make that decision better informed. Habitual traders tend to land somewhere in between: they keep a short list of exchanges they already trust from past rankings, and reserve a full comparison for trades large enough, or pairs unfamiliar enough, to justify the extra few minutes.</div></section>
+    <details class="c6d784d"><summary class="c0b6361">What is a DappRadar DEX?</summary><div class="caebb40">It is any decentralized exchange tracked on DappRadar's dashboards, where volume, total value locked and user counts are gathered from on-chain data so you can compare venues before swapping.</div></details>
+<details class="c6d784d"><summary class="c0b6361">Does DappRadar hold my funds when I use a DEX from its rankings?</summary><div class="caebb40">No. DappRadar only aggregates and displays public on-chain data. The swap itself runs self-custody, directly between your wallet and the exchange's own smart contract.</div></details>
+<details class="c6d784d"><summary class="c0b6361">How do I pick a DEX for ETH to USDC?</summary><div class="caebb40">Sort the rankings by volume and total value locked for that pair, then compare the quoted price and slippage on the top two or three exchanges before confirming a swap.</div></details>
+<details class="c6d784d"><summary class="c0b6361">Why does a top-ranked DEX sometimes quote a worse price?</summary><div class="caebb40">Overall rank reflects total activity across all pairs on that exchange, not the depth of the specific pool you need. A smaller DEX can have a deeper pool for your exact pair.</div></details>
+<details class="c6d784d"><summary class="c0b6361">What is slippage and why does it matter?</summary><div class="caebb40">Slippage is the difference between the quoted price and the price you actually receive once your order moves the pool. Deeper pools move less per trade, which keeps slippage lower.</div></details>
+<details class="c6d784d"><summary class="c0b6361">Is it safe to connect my wallet to an exchange found through rankings?</summary><div class="caebb40">Treat it the same as any DEX: verify the contract address through a source such as Etherscan, grant only the approval your trade needs, and never share your seed phrase anywhere.</div></details>
+<details class="c6d784d"><summary class="c0b6361">Can I compare the same DEX across different chains?</summary><div class="caebb40">Yes. A single exchange brand often appears multiple times in the rankings, once per chain it is deployed on, because liquidity and pricing differ by deployment even under the same name.</div></details>
+  </main>
+  <section class="c046fb5 cce5077" aria-labelledby="sources-title">
+    <h2 class="c2d132c" id="sources-title">Sources</h2>
+    <ul class="c295bca"><li><a class="c687193" href="https://dappradar.com/" rel="nofollow noopener" target="_blank">DappRadar</a></li>
+<li><a class="c687193" href="https://docs.uniswap.org/" rel="nofollow noopener" target="_blank">Uniswap documentation</a></li>
+<li><a class="c687193" href="https://defillama.com/" rel="nofollow noopener" target="_blank">DefiLlama</a></li>
+<li><a class="c687193" href="https://en.wikipedia.org/wiki/Decentralized_exchange" rel="nofollow noopener" target="_blank">Wikipedia — Decentralized exchange</a></li></ul>
+  </section>
+  <footer class="ca5e8de">
+    <span class="cfa5e12">Exchange</span>
+    <p class="ce5b106">Updated <span>Updated Oct 09, 2026</span></p>
+  </footer>
 </div>
-<div class="topbar-right">
-<div aria-label="Live metrics" class="ticker">
-<a aria-label="RADAR price" class="tick" href="https://www.coingecko.com/en/coins/dappradar" rel="noopener noreferrer" target="_blank"><span>RADAR</span> <b id="sig-radar">…</b> <span aria-hidden="true" class="ext">↗</span></a>
-<a aria-label="Coverage" class="tick" href="#chains"><span>Coverage</span> <b>Multi-chain</b></a>
-</div>
-<a class="nav-cta" href="dashboard/">Open App <span aria-hidden="true">↗</span></a>
-</div>
-</header>
-<main id="main">
-<section class="hero">
-<div class="hero-l">
-<span class="eyebrow"><span class="dot" aria-hidden="true"></span>DappRadar · DEX &amp; Token Explorer</span>
-<h2 class="hero-h">Track DEX activity <span class="grad">across every chain</span></h2>
-<p class="hero-lead"><strong>DappRadar DEX</strong> uses DappRadar's dapp analytics to track decentralized-exchange activity, token prices, trading volume and rankings across many blockchains. This is an independent, informational page and does <strong>not execute trades</strong>.</p>
-<div class="hero-cta">
-<a class="btn btn-primary" href="dashboard/">Open DEX Explorer <span aria-hidden="true" class="go">↗</span></a>
-<a class="btn btn-ghost" href="#what">How it works</a>
-</div>
-<div class="trust">
-<div class="trust-badge"><span class="tb-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span><div><b>DEX Analytics</b><span>Volume &amp; trades</span></div></div>
-<div class="trust-badge"><span class="tb-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><div><b>Token Explorer</b><span>Prices &amp; data</span></div></div>
-<div class="trust-badge"><span class="tb-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span><div><b>Rankings</b><span>Compare dapps</span></div></div>
-<div class="trust-badge"><span class="tb-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></span><div><b>Multi-Chain</b><span>Many networks</span></div></div>
-</div>
-</div>
-<div class="hero-r">
-<div class="swap-wrap">
-<section aria-labelledby="preview-title" class="swap-card">
-<div class="card-head">
-<p class="card-title" id="preview-title">Explore DEXs &amp; tokens</p>
-<span class="preview-tag"><span aria-hidden="true"></span>Info</span>
-</div>
-<div class="leg" id="leg-from">
-<div class="leg-top"><span class="leg-cap">Explore</span><span class="leg-bal">Read-only</span></div>
-<div class="leg-body">
-<span class="amount dim">DEXs</span>
-<span class="asset" role="button" tabindex="0" aria-label="View: DEX analytics"><span class="tok"><img alt="RADAR" decoding="async" height="28" loading="lazy" src="radar.png" width="28"/></span>DEX<svg aria-hidden="true" class="chev-sm" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
-</div>
-</div>
-<button aria-label="Flip card view" class="swap-arrow" id="route-swap" title="Flip view" type="button">
-<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 4v13M8 4L4 8M8 4l4 4M16 20V7M16 20l-4-4M16 20l4-4"></path></svg>
-</button>
-<div class="leg" id="leg-to">
-<div class="leg-top"><span class="leg-cap">Compare</span><span class="leg-bal">Read-only</span></div>
-<div class="leg-body">
-<span class="amount dim">Tokens</span>
-<span class="asset" role="button" tabindex="0" aria-label="View: token explorer"><span class="tok"><img alt="Ethereum" decoding="async" height="28" loading="lazy" src="eth.png" width="28"/></span>Tokens<svg aria-hidden="true" class="chev-sm" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
-</div>
-</div>
-<div class="route-panel">
-<div class="route-info"><b id="route-name">DEXs &amp; Tokens</b><span>DappRadar analytics</span></div>
-<div class="route-tok"><span class="tok"><img alt="RADAR token" decoding="async" height="22" loading="lazy" src="radar.png" width="22"/></span> RADAR</div>
-</div>
-<div class="route-row"><span>Metrics</span><b>Volume · prices</b></div>
-<div class="route-row"><span>Trades</span><b>None on this page</b></div>
-<a class="swap-cta" href="dashboard/">Open DEX Explorer<span aria-hidden="true" class="cta-go">↗</span></a>
-<p class="swap-foot">Informational preview · analytics happen in the app</p>
-</section>
-</div>
-</div>
-</section>
-<div class="content">
-<div class="section-intro reveal">
-<p><strong>DappRadar DEX</strong> means using <a href="https://dappradar.com" rel="noopener noreferrer nofollow" target="_blank">DappRadar</a> — a dapp analytics platform tracking apps, tokens and activity across many blockchains — to follow decentralized-exchange activity. With its DEX and token explorer you can compare trading volume, active traders, token prices and rankings across chains. This is an independent, informational reference and is <strong>not affiliated with or endorsed by DappRadar</strong>; it shows analytics and does not execute trades.</p>
-</div>
-<div class="docs">
-<nav aria-label="On this page" class="toc">
-<p class="toc-h">On this page</p>
-<a href="#what">What is DappRadar DEX?</a>
-<a href="#how">How the DEX explorer works</a>
-<a href="#metrics">DEX metrics explained</a>
-<a href="#tokens">Token explorer &amp; prices</a>
-<a href="#chains">Chains &amp; coverage</a>
-<a href="#accuracy">Data accuracy &amp; caveats</a>
-<a href="#safety">Using analytics safely</a>
-<a href="#faq">DappRadar DEX FAQ</a>
-<a href="#notes">Notes before you rely on data</a>
-</nav>
-<div class="doc-main">
-<details class="sec reveal" id="what" open="">
-<summary><h2>What is DappRadar DEX?</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p><strong>DappRadar</strong> is a dapp analytics platform that tracks decentralized applications, tokens and on-chain activity across many blockchains. Its DEX and token sections let you follow <a href="https://en.wikipedia.org/wiki/Decentralized_exchange" rel="noopener noreferrer nofollow" target="_blank">decentralized-exchange</a> volume, active traders, token prices and rankings in one place.</p><p>"DappRadar DEX" on this page means using that explorer to research DEX and token activity. This is an independent, informational reference and is <strong>not affiliated with or endorsed by DappRadar</strong>. It surfaces analytics only and does not execute trades — swapping happens on a DEX directly, with your own wallet.</p></div>
-</details>
-<details class="sec reveal" id="how" open="">
-<summary><h2>How the DEX explorer works</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p>The explorer aggregates on-chain and market data and presents it as browsable dashboards: lists of DEXs and tokens, sortable by metrics like volume or activity, with detail pages for individual dapps and assets. You filter by chain and time window to compare like with like.</p><p>Because it reads public data, no wallet connection or signature is required just to look. Use it to spot trends, compare venues, and check a token before you act — then head to the project's own site or a DEX to do anything on-chain.</p></div>
-</details>
-<details class="sec reveal" id="metrics" open="">
-<summary><h2>DEX metrics explained</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p>Common DEX metrics you will see include:</p><ul><li><strong>Volume:</strong> the total value traded over a period — a headline measure of how much a DEX is used.</li><li><strong>Active traders:</strong> unique wallets trading, which hints at real usage versus a few large actors.</li><li><strong>Transactions:</strong> the count of trades, useful alongside volume to gauge average trade size.</li><li><strong>Rankings:</strong> DEXs and dapps ordered by a chosen metric, so you can compare across chains.</li></ul><p>Read metrics together rather than in isolation — high volume with very few traders, for instance, deserves a second look.</p></div>
-</details>
-<details class="sec reveal" id="tokens" open="">
-<summary><h2>Token explorer &amp; prices</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p>The token explorer shows prices, market data and activity for <a href="https://ethereum.org/en/developers/docs/standards/tokens/erc-20/" rel="noopener noreferrer nofollow" target="_blank">ERC-20</a> and other tokens across supported chains, so you can look up an asset before trading it on a DEX.</p><p>Confirm a token by its <strong>contract address</strong>, not by ticker or logo alone — imposters routinely clone names of popular tokens. The <strong>RADAR</strong> token itself is part of the DappRadar ecosystem, but holding it is not required to use the analytics.</p></div>
-</details>
-<details class="sec reveal" id="chains" open="">
-<summary><h2>Chains &amp; coverage</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p>DappRadar aggregates activity across many blockchains, including Ethereum, its <a href="https://ethereum.org/en/layer-2/" rel="noopener noreferrer nofollow" target="_blank">layer-2</a> rollups and other layer-1 networks. That breadth is what makes cross-chain DEX and token comparisons possible from a single view.</p><p>Coverage and the exact metrics available differ by chain and by dapp, since data depends on what each network and protocol exposes. Check the live explorer for which chains and venues are currently tracked.</p></div>
-</details>
-<details class="sec reveal" id="accuracy" open="">
-<summary><h2>Data accuracy &amp; caveats</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p>Analytics platforms aggregate data that can lag, differ between sources, or be distorted. Keep these caveats in mind:</p><ul><li><strong>Wash trading:</strong> artificial volume can inflate a DEX or token's apparent activity.</li><li><strong>Thin liquidity:</strong> a headline price can be unreachable for any real size.</li><li><strong>Source differences:</strong> two trackers may report different numbers for the same asset.</li><li><strong>Latency:</strong> figures may be delayed and should not be treated as live execution prices.</li></ul><p>Treat rankings and volume as indicators, cross-check multiple sources, and verify contracts before acting. Not financial advice.</p></div>
-</details>
-<details class="sec reveal" id="safety" open="">
-<summary><h2>Using analytics safely</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body">
-<p>Reading data carries no on-chain risk, but acting on it does. Read the notices below before you trade on anything you find here.</p>
-<details class="notice" open="">
-<summary><span class="n-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span><span class="n-title">Analytics, not advice</span><span class="chev-w" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="n-body">This is an independent, informational resource and is <strong>not affiliated with or endorsed by DappRadar</strong>. Rankings and metrics can be gamed by wash trading or distorted by thin liquidity, and are not investment advice or a signal to buy. Trading carries smart-contract, liquidity and <a href="https://consumer.ftc.gov/articles/how-recognize-avoid-phishing-scams" rel="noopener noreferrer nofollow" target="_blank">phishing</a> risks.</div>
-</details>
-<details class="notice">
-<summary><span class="n-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3Z"/></svg></span><span class="n-title">Verify before you trade</span><span class="chev-w" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="n-body">Before swapping a token you found in analytics, verify its contract address, check liquidity and price impact on the DEX itself, and use only official sites and your own wallet. Never approve a token allowance to an unfamiliar contract.</div>
-</details>
-</div>
-</details>
-<details class="sec reveal" id="faq" open="">
-<summary><h2>DappRadar DEX FAQ</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body">
-<details class="qa"><summary>What is DappRadar DEX, and is this the official site?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>It refers to using DappRadar's analytics to track DEX activity, token prices, volume and rankings across chains. This is an independent, informational page, not affiliated with or endorsed by DappRadar, and it does not execute trades.</p></div></details>
-<details class="qa"><summary>What can I track with DappRadar's DEX explorer?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>DEX volume, active traders and transaction counts, plus token prices, market data and rankings across many chains. It is a research tool for comparing dapps, DEXs and tokens — not a place to swap.</p></div></details>
-<details class="qa"><summary>Does DappRadar let me swap tokens?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>DappRadar is primarily analytics — it shows DEX and token data rather than acting as an exchange. To swap, you use a DEX directly with your own wallet. This page mirrors that analytics purpose and does not execute trades.</p></div></details>
-<details class="qa"><summary>Which blockchains does DappRadar cover?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>It aggregates activity across many blockchains, including Ethereum, its layer-2 rollups and other layer-1 networks. Coverage and metrics vary by chain and dapp, so confirm details in the live explorer.</p></div></details>
-<details class="qa"><summary>How accurate is DEX and token data?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>Aggregated data can lag, differ between sources, or be distorted by wash trading and low liquidity. Treat rankings and volume as indicators, cross-check sources, and verify token contracts before acting. Not financial advice.</p></div></details>
-<details class="qa"><summary>What is the RADAR token?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>RADAR is the utility and governance token of the DappRadar ecosystem — an ERC-20 on Ethereum with bridged versions elsewhere. Holding it is not required to use the analytics, and this page does not sell or distribute it.</p></div></details>
-</div>
-</details>
-<section class="field-notes reveal" id="notes">
-<h2>Notes before you rely on data</h2>
-<div class="fn-body"><strong>Use analytics as a starting point, not a verdict.</strong> Cross-check any DEX or token you find here before acting on it. <strong>Keep in mind:</strong><ul><li>Volume and rankings can be inflated by wash trading or thin liquidity.</li><li>This page shows analytics only and does not execute trades.</li><li>Verify token contracts and check liquidity on the DEX itself before swapping.</li></ul>Independent reference — not affiliated with or endorsed by DappRadar. Not financial advice.</div>
-</section>
-</div>
-</div>
-</div>
-</main>
-<footer class="site-foot"><div class="wrap">DappRadar DEX — independent, informational guide. Not affiliated with or endorsed by DappRadar. Analytics only; does not execute trades. Not financial advice. · <a href="dashboard/">Open DEX Explorer ↗</a> · © 2026</div></footer>
 <script>
-(function(){
-  "use strict";
-  document.documentElement.classList.add("js");
-  var $=function(id){return document.getElementById(id);};
-  var SIGNALS=[{"t":"price","id":"sig-radar","cg":"dappradar","chg":true}];
-  (function(){var S=SIGNALS;if(!S||!S.length)return;function el(id){return document.getElementById(id);}function hide(id){var e=el(id);if(e){var t=e.closest(".tick");if(t)t.style.display="none";}}function set(id,x){var e=el(id);if(e)e.textContent=x;}function usd(n){n=Number(n);return "$"+n.toLocaleString("en-US",{maximumFractionDigits:n<1?4:2});}function jf(u){return fetch(u).then(function(r){if(!r.ok)throw 0;return r.json();});}var ids=S.map(function(s){return s.cg;}).join(",");jf("https://api.coingecko.com/api/v3/simple/price?ids="+ids+"&vs_currencies=usd&include_24hr_change=true").then(function(v){S.forEach(function(s){var d=v[s.cg];if(!d){hide(s.id);return;}if(isFinite(d.usd)){var x=usd(d.usd);if(s.chg&&isFinite(d.usd_24h_change)){var c=d.usd_24h_change;x+=" "+(c>=0?"▲":"▼")+Math.abs(c).toFixed(1)+"%";}set(s.id,x);}else hide(s.id);});}).catch(function(){S.forEach(function(s){hide(s.id);});});})();
-  var swap=$("route-swap");
-  if(swap)swap.addEventListener("click",function(){var from=$("leg-from"),to=$("leg-to");if(from&&to){var fa=from.querySelector(".asset"),ta=to.querySelector(".asset");var tmp=fa.innerHTML;fa.innerHTML=ta.innerHTML;ta.innerHTML=tmp;}var name=$("route-name");if(name)name.textContent=(name.textContent==="DEXs & Tokens")?"Tokens & DEXs":"DEXs & Tokens";});
-  Array.prototype.forEach.call(document.querySelectorAll("details"),function(d){var s=d.querySelector("summary");if(!s)return;s.setAttribute("aria-expanded",d.open?"true":"false");d.addEventListener("toggle",function(){s.setAttribute("aria-expanded",d.open?"true":"false");});});
-  Array.prototype.forEach.call(document.querySelectorAll('.asset[role="button"]'),function(b){b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();if(swap)swap.click();}});});
-  var reveals=document.querySelectorAll(".reveal");var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(reveals.length&&"IntersectionObserver" in window&&!reduce){var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{rootMargin:"0px 0px -8% 0px",threshold:0.08});reveals.forEach(function(el){io.observe(el);});}else{reveals.forEach(function(el){el.classList.add("in");});}
-  function openHash(){var id=location.hash.slice(1);if(!id)return;var el=document.getElementById(id);if(el&&el.tagName==="DETAILS"){el.open=true;el.classList.add("in");}}
-  window.addEventListener("hashchange",openHash);openHash();
-  document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var el=document.getElementById(a.getAttribute("href").slice(1));if(el&&el.tagName==="DETAILS"){el.open=true;el.classList.add("in");}});
+(() => {
+  'use strict';
+  const amount = document.getElementById('amount');
+  const received = document.getElementById('received');
+  const rateOutput = document.getElementById('rate');
+  const feeOutput = document.getElementById('network-fee');
+  const message = document.getElementById('amount-message');
+  const exchangeRate = 0.985;
+  const baseFee = 0.25;
+  const networkFactor = 0.001;
+  const formatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 6 });
+  let timer;
+
+  function clearQuote() {
+    received.value = '—';
+    rateOutput.value = '—';
+    feeOutput.value = '—';
+  }
+
+  function updateQuote() {
+    clearTimeout(timer);
+    const raw = amount.value.trim();
+    const value = amount.valueAsNumber;
+    const valid = raw !== '' && Number.isFinite(value) && value >= 1 && value <= 1000000 && !amount.validity.badInput;
+    amount.setAttribute('aria-invalid', String(!valid));
+    message.dataset.invalid = String(!valid);
+    if (!valid) {
+      clearQuote();
+      const error = 'Enter an amount from 1 to 1,000,000.';
+      amount.setCustomValidity(error);
+      message.textContent = error;
+      return;
+    }
+    amount.setCustomValidity('');
+    const networkFee = baseFee + value * networkFactor;
+    const netAmount = Math.max(0, value * exchangeRate - networkFee);
+    received.value = formatter.format(netAmount);
+    rateOutput.value = '1 → ' + formatter.format(exchangeRate);
+    feeOutput.value = formatter.format(networkFee) + ' destination units';
+    message.textContent = '';
+  }
+
+  amount.addEventListener('input', () => {
+    clearTimeout(timer);
+    amount.setCustomValidity('');
+    clearQuote();
+    timer = setTimeout(updateQuote, 200);
+  });
+  amount.addEventListener('change', updateQuote);
+  amount.addEventListener('blur', updateQuote);
+  updateQuote();
 })();
-(function(){var links=[].slice.call(document.querySelectorAll(".toc a"));if(!links.length)return;var secs=[].slice.call(document.querySelectorAll(".doc-main [id]")).filter(function(s){return document.querySelector('.toc a[href="#'+s.id+'"]');});if(!secs.length)return;function setA(id){links.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+id);});}function up(){var cur=secs[0];for(var i=0;i<secs.length;i++){if(secs[i].getBoundingClientRect().top-120<=0)cur=secs[i];else break;}if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)cur=secs[secs.length-1];if(cur)setA(cur.id);}window.addEventListener("scroll",up,{passive:true});window.addEventListener("resize",up);up();})();
 </script>
 </body>
 </html>
