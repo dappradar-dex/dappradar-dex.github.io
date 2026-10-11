@@ -1,1107 +1,231 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DappRadar DEX — Compare Exchanges Before You Swap ETH to USDC</title>
-<meta name="description" content="Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.">
-<link rel="canonical" href="https://dappradar-dex.github.io/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DappRadar DEX">
-<meta property="og:description" content="Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.">
-<meta property="og:url" content="https://dappradar-dex.github.io/">
-<meta property="og:image" content="https://dappradar-dex.github.io/og.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="DappRadar DEX">
-<meta name="twitter:description" content="Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.">
-<meta name="twitter:image" content="https://dappradar-dex.github.io/og.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DappRadar DEX — Compare Exchanges Before You Swap ETH to USDC</title>
+  <meta name="description" content="Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.">
+  <link rel="canonical" href="https://dappradar-dex.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DappRadar DEX">
+  <meta property="og:description" content="Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.">
+  <meta property="og:url" content="https://dappradar-dex.github.io/">
+  <meta property="og:image" content="https://dappradar-dex.github.io/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DappRadar DEX">
+  <meta name="twitter:description" content="Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.">
+  <meta name="twitter:image" content="https://dappradar-dex.github.io/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://dappradar-dex.github.io/#website", "url": "https://dappradar-dex.github.io/", "name": "DappRadar DEX — Compare Exchanges Before You Swap ETH to USDC"}, {"@type": "WebPage", "@id": "https://dappradar-dex.github.io/#webpage", "url": "https://dappradar-dex.github.io/", "name": "DappRadar DEX — Compare Exchanges Before You Swap ETH to USDC", "isPartOf": {"@id": "https://dappradar-dex.github.io/#website"}, "description": "Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.", "datePublished": "2026-10-10", "dateModified": "2026-10-10"}, {"@type": "SoftwareApplication", "name": "DappRadar DEX", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dappradar-dex.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "DappRadar DEX"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a DappRadar DEX?", "acceptedAnswer": {"@type": "Answer", "text": "It is any decentralized exchange tracked on DappRadar's dashboards, where volume, total value locked and user counts are gathered from on-chain data so you can compare venues before swapping."}}, {"@type": "Question", "name": "Does DappRadar hold my funds when I use a DEX from its rankings?", "acceptedAnswer": {"@type": "Answer", "text": "No. DappRadar only aggregates and displays public on-chain data. The swap itself runs self-custody, directly between your wallet and the exchange's own smart contract."}}, {"@type": "Question", "name": "How do I pick a DEX for ETH to USDC?", "acceptedAnswer": {"@type": "Answer", "text": "Sort the rankings by volume and total value locked for that pair, then compare the quoted price and slippage on the top two or three exchanges before confirming a swap."}}, {"@type": "Question", "name": "Why does a top-ranked DEX sometimes quote a worse price?", "acceptedAnswer": {"@type": "Answer", "text": "Overall rank reflects total activity across all pairs on that exchange, not the depth of the specific pool you need. A smaller DEX can have a deeper pool for your exact pair."}}, {"@type": "Question", "name": "What is slippage and why does it matter?", "acceptedAnswer": {"@type": "Answer", "text": "Slippage is the difference between the quoted price and the price you actually receive once your order moves the pool. Deeper pools move less per trade, which keeps slippage lower."}}, {"@type": "Question", "name": "Is it safe to connect my wallet to an exchange found through rankings?", "acceptedAnswer": {"@type": "Answer", "text": "Treat it the same as any DEX: verify the contract address through a source such as Etherscan, grant only the approval your trade needs, and never share your seed phrase anywhere."}}, {"@type": "Question", "name": "Can I compare the same DEX across different chains?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A single exchange brand often appears multiple times in the rankings, once per chain it is deployed on, because liquidity and pricing differ by deployment even under the same name."}}]}]}</script>
-<style>
-:root{--bg:#09100E;--surface:#12201B;--text:#E7F3EC;--muted:#83968C;--accent:#2DD4A7;--accent-ink:#04201A;--radius:16px;--display:"Manrope";--body:"Manrope"}
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-html {
-  min-width: 280px;
-  scroll-behavior: smooth;
-  scroll-padding-top: 2rem;
-  background: var(--bg);
-  -webkit-text-size-adjust: 100%;
-}
-body {
-  margin: 0;
-  color: var(--text);
-  background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 42rem), var(--bg);
-  font-family: var(--body);
-  font-size: 1rem;
-  line-height: 1.65;
-  overflow-wrap: anywhere;
-  -webkit-font-smoothing: antialiased;
-}
-::selection {
-  color: var(--accent-ink);
-  background: var(--accent);
-}
-a {
-  color: var(--accent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.22em;
-  transition: color 160ms ease, background 160ms ease, box-shadow 160ms ease;
-}
-a:hover {
-  color: color-mix(in srgb, var(--accent) 76%, var(--text));
-}
-a:focus-visible,
-input:focus-visible,
-summary:focus-visible,
-[tabindex]:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 5px;
-}
-img,
-svg {
-  max-width: 100%;
-  vertical-align: middle;
-}
-img {
-  height: auto;
-}
-input,
-output {
-  font-family: var(--body);
-}
-h1,
-h2,
-h3,
-h4 {
-  color: var(--text);
-  font-family: var(--display);
-  text-wrap: balance;
-}
-p,
-ul,
-ol,
-blockquote,
-figure {
-  margin: 0;
-}
-.c5374ef {
-  width: min(100% - 4rem, 1120px);
-  margin-inline: auto;
-}
-.cdf9e9d {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  min-height: 92px;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-}
-.c032284 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 1.2rem;
-  font-weight: 750;
-  letter-spacing: -0.045em;
-}
-.cc0593b {
-  display: grid;
-  width: 36px;
-  height: 36px;
-  place-items: center;
-  border: 1px solid color-mix(in srgb, var(--accent) 23%, transparent);
-  border-radius: calc(var(--radius) * 0.55);
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
-  font-size: 1.4rem;
-  line-height: 1;
-}
-.c6ec6c9 {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
-  min-height: 42px;
-  padding: 0.55rem 1.1rem;
-  border: 1px solid color-mix(in srgb, var(--text) 14%, transparent);
-  border-radius: calc(var(--radius) * 0.65);
-  color: var(--text);
-  background: color-mix(in srgb, var(--surface) 80%, transparent);
-  font-size: 0.85rem;
-  font-weight: 650;
-  text-decoration: none;
-}
-.c6ec6c9:hover {
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
-  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
-}
-.c656090 {
-  padding-block: 1.4rem 0.5rem;
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-.cad16c3 {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.45rem 0.7rem;
-  margin: 0;
-  padding: 0;
-  color: var(--muted);
-  list-style: none;
-}
-.cad16c3 ol,
-.cad16c3 ul {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.45rem 0.7rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.cad16c3 li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-.cad16c3 li + li::before {
-  content: "/";
-  color: color-mix(in srgb, var(--muted) 60%, transparent);
-}
-.cad16c3 a {
-  color: var(--muted);
-  text-decoration: none;
-}
-.cad16c3 a:hover {
-  color: var(--accent);
-  text-decoration: underline;
-}
-.cad16c3 [aria-current="page"] {
-  color: var(--text);
-}
-.ce50974 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: clamp(1.5rem, 3.5vw, 2.75rem);
-  text-align: center;
-}
-.ceefdd2 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  margin-bottom: 1.25rem;
-  padding: 0.35rem 0.8rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
-  border-radius: calc(var(--radius) * 2);
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-.ceefdd2::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent);
-}
-.ce50974 h1 {
-  max-width: 960px;
-  margin: 0;
-  font-size: clamp(2.3rem, 5vw, 4.2rem);
-  font-weight: 650;
-  line-height: 1.06;
-  letter-spacing: -0.06em;
-}
-.ce50974 h1 em,
-.ce50974 h1 strong,
-.ce50974 h1 span {
-  color: var(--accent);
-}
-.ce50974 h1 em {
-  font-style: normal;
-}
-.c19d4d7 {
-  max-width: 720px;
-  margin: 1.1rem auto 0;
-  color: var(--muted);
-  font-size: clamp(1rem, 1.65vw, 1.15rem);
-  line-height: 1.85;
-  text-wrap: pretty;
-}
-.c110fcf {
-  position: relative;
-  isolation: isolate;
-  width: 100%;
-  margin-top: clamp(1.25rem, 2.5vw, 2rem);
-  padding: clamp(1.2rem, 3.5vw, 2.6rem);
-  border: 1px solid color-mix(in srgb, var(--accent) 19%, var(--surface));
-  border-radius: var(--radius);
-  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 5%, var(--surface)), var(--surface) 48%);
-  box-shadow: 0 24px 65px -24px color-mix(in srgb, var(--text) 21%, transparent), 0 4px 14px -7px color-mix(in srgb, var(--accent) 16%, transparent);
-  text-align: left;
-}
-.c110fcf::before {
-  position: absolute;
-  inset: -1px 12% auto;
-  height: 2px;
-  content: "";
-  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 0%, transparent), color-mix(in srgb, var(--accent) 65%, transparent), color-mix(in srgb, var(--accent) 0%, transparent));
-}
-.c52b26e {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.6rem 1rem;
-  margin-bottom: 1rem;
-}
-.c52b26e h2 {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 650;
-  letter-spacing: -0.035em;
-}
-.c52b26e p {
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-.cc1708c {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: stretch;
-  gap: 1rem;
-}
-.cfa430d {
-  min-width: 0;
-  padding: 1.4rem 1.5rem 1.1rem;
-  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
-  border-radius: calc(var(--radius) * 0.7);
-  background: color-mix(in srgb, var(--bg) 65%, var(--surface));
-  transition: border-color 160ms ease, box-shadow 160ms ease;
-}
-.cfa430d:focus-within {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 9%, transparent);
-}
-.c461740 {
-  border-color: color-mix(in srgb, var(--accent) 18%, transparent);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, var(--surface)), color-mix(in srgb, var(--accent) 3%, var(--surface)));
-}
-.c929e5a {
-  display: block;
-  margin-bottom: 0.65rem;
-  color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 550;
-}
-#amount {
-  display: block;
-  width: 100%;
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  color: var(--text);
-  background: color-mix(in srgb, var(--surface) 0%, transparent);
-  font-family: var(--body);
-  font-size: clamp(1.7rem, 3vw, 2.65rem);
-  font-weight: 550;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.3;
-  letter-spacing: -0.045em;
-  appearance: textfield;
-  -moz-appearance: textfield;
-}
-#amount::-webkit-inner-spin-button,
-#amount::-webkit-outer-spin-button {
-  margin: 0;
-  -webkit-appearance: none;
-}
-#amount::placeholder {
-  color: var(--muted);
-  opacity: 0.65;
-}
-#amount:focus-visible {
-  outline-offset: 3px;
-  outline-width: 2px;
-}
-#amount[aria-invalid="true"] {
-  text-decoration: underline wavy;
-  text-decoration-color: var(--accent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
-}
-#received {
-  display: block;
-  min-height: 1.3em;
-  color: var(--text);
-  font-size: clamp(1.7rem, 3vw, 2.65rem);
-  font-weight: 550;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.3;
-  letter-spacing: -0.045em;
-  overflow-wrap: anywhere;
-}
-.ccc8e0f {
-  display: block;
-  margin-top: 0.6rem;
-  color: var(--muted);
-  font-size: 0.73rem;
-  line-height: 1.5;
-}
-.c941ff9 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding-inline: 0.15rem;
-}
-.c8c97aa {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  width: 48px;
-  min-height: 48px;
-  padding: 0.4rem;
-  border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-  border-radius: calc(var(--radius) * 0.55);
-  background: var(--surface);
-  box-shadow: 0 4px 10px color-mix(in srgb, var(--text) 4%, transparent);
-  font-size: 0.65rem;
-  line-height: 1.2;
-  text-align: center;
-}
-.c8c97aa img,
-.c8c97aa svg {
-  display: block;
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-}
-.cad73b2 {
-  color: var(--accent);
-  font-size: 1.3rem;
-}
-.c222a23 {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.55fr);
-  align-items: center;
-  gap: 1.5rem 2.5rem;
-  margin-top: 1.4rem;
-}
-.cc0201c {
-  display: grid;
-  gap: 0.45rem;
-  margin: 0;
-  font-size: 0.8rem;
-}
-.cc0201c > div {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.cc0201c dt {
-  color: var(--muted);
-}
-.cc0201c dd {
-  margin: 0;
-  color: var(--text);
-  font-weight: 550;
-  font-variant-numeric: tabular-nums;
-  text-align: right;
-}
-.cf4db6d {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  min-height: 56px;
-  padding: 0.9rem 1.3rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 85%, var(--text));
-  border-radius: calc(var(--radius) * 0.65);
-  color: var(--accent-ink);
-  background: linear-gradient(120deg, var(--accent), color-mix(in srgb, var(--accent) 85%, var(--text)));
-  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--accent) 45%, transparent);
-  font-size: 0.9rem;
-  font-weight: 650;
-  text-decoration: none;
-  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
-}
-.cf4db6d:hover {
-  transform: translateY(-2px);
-  color: var(--accent-ink);
-  background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 94%, var(--text)), color-mix(in srgb, var(--accent) 78%, var(--text)));
-  box-shadow: 0 12px 28px -9px color-mix(in srgb, var(--accent) 50%, transparent);
-}
-.cf4db6d:active {
-  transform: translateY(0);
-}
-.cf4db6d span:last-child {
-  font-size: 1.3rem;
-  line-height: 1;
-}
-.c582c0f {
-  min-height: 1.5em;
-  margin-top: 0.8rem;
-  color: var(--muted);
-  font-size: 0.75rem;
-}
-.c582c0f[data-invalid="true"] {
-  color: var(--text);
-  font-weight: 600;
-}
-.c9af5b9 {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  margin-block: 1.6rem 4.5rem;
-  padding: 1rem 0;
-  border-block: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
-  list-style: none;
-}
-.c9af5b9 li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 0.6rem 0.75rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-  text-align: center;
-}
-.c9af5b9 li + li {
-  border-left: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-}
-.c9af5b9 li::before {
-  content: "✓";
-  color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 650;
-}
-.cfe83a7 {
-  margin-bottom: 4rem;
-  padding: clamp(1.25rem, 3.5vw, 2.75rem);
-  border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: 0 12px 35px -22px color-mix(in srgb, var(--text) 18%, transparent);
-}
-.c2d132c {
-  margin: 0 0 1.6rem;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.045em;
-}
-.ca443a5 {
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-}
-.c6fbec6 {
-  width: 100%;
-  border-collapse: collapse;
-  color: var(--text);
-  font-size: 0.92rem;
-  line-height: 1.65;
-  text-align: left;
-}
-.c6fbec6 caption {
-  margin-bottom: 1rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-  text-align: left;
-}
-.c6fbec6 th,
-.c6fbec6 td {
-  padding: 1.05rem 1.2rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
-  vertical-align: top;
-}
-.c6fbec6 th {
-  width: 31%;
-  color: var(--muted);
-  font-weight: 500;
-}
-.c6fbec6 td {
-  font-weight: 550;
-}
-.c6fbec6 tr:nth-child(odd) {
-  background: color-mix(in srgb, var(--accent) 3%, var(--surface));
-}
-.c6fbec6 tr:last-child > * {
-  border-bottom: 0;
-}
-.c6fbec6 thead th {
-  color: var(--text);
-  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
-  font-weight: 650;
-}
-.cce5077 {
-  width: min(100%, 860px);
-  margin-inline: auto;
-}
-.c89626b {
-  margin-block: 0 3.6rem;
-  padding-bottom: 3.2rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-  scroll-margin-top: 2rem;
-}
-.c930cb1 {
-  margin: 0 0 1.25rem;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -0.045em;
-}
-.c67a61a {
-  color: var(--muted);
-  font-family: var(--body);
-  font-size: 1rem;
-  line-height: 1.85;
-}
-.c67a61a > * + * {
-  margin-top: 1.25rem;
-}
-.c67a61a h3,
-.c67a61a h4 {
-  margin-block: 2rem 0.75rem;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 1.3rem;
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: -0.025em;
-}
-.c67a61a h4 {
-  font-size: 1.1rem;
-}
-.c67a61a strong,
-.caebb40 strong {
-  color: var(--text);
-  font-weight: 650;
-}
-.c67a61a ul,
-.c67a61a ol,
-.caebb40 ul,
-.caebb40 ol {
-  padding-left: 1.4rem;
-}
-.c67a61a li,
-.caebb40 li {
-  padding-left: 0.3rem;
-}
-.c67a61a li + li,
-.caebb40 li + li {
-  margin-top: 0.65rem;
-}
-.c67a61a li::marker,
-.caebb40 li::marker {
-  color: var(--accent);
-}
-.c67a61a li > ul,
-.c67a61a li > ol {
-  margin-top: 0.65rem;
-}
-.c67a61a blockquote {
-  padding: 1.25rem 1.5rem;
-  border-left: 3px solid var(--accent);
-  border-radius: 0 calc(var(--radius) * 0.45) calc(var(--radius) * 0.45) 0;
-  color: var(--text);
-  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
-}
-.c67a61a blockquote p + p {
-  margin-top: 0.8rem;
-}
-.c67a61a table {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  border-collapse: collapse;
-  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
-  border-radius: calc(var(--radius) * 0.6);
-  background: var(--surface);
-  font-size: 0.88rem;
-  line-height: 1.6;
-  text-align: left;
-  overscroll-behavior-inline: contain;
-}
-.c67a61a table th,
-.c67a61a table td {
-  min-width: 8rem;
-  padding: 0.95rem 1.15rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
-  vertical-align: top;
-}
-.c67a61a table th {
-  color: var(--text);
-  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
-  font-weight: 600;
-}
-.c67a61a table tbody tr:nth-child(even) {
-  background: color-mix(in srgb, var(--bg) 65%, var(--surface));
-}
-.c67a61a table tr:last-child td {
-  border-bottom: 0;
-}
-.c67a61a table caption {
-  padding: 0.85rem 1.15rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-  text-align: left;
-}
-.c67a61a code,
-.c67a61a pre {
-  border-radius: calc(var(--radius) * 0.3);
-  color: var(--text);
-  background: color-mix(in srgb, var(--text) 5%, var(--surface));
-  font-family: var(--body);
-  font-size: 0.9em;
-}
-.c67a61a code {
-  padding: 0.15em 0.4em;
-}
-.c67a61a pre {
-  overflow-x: auto;
-  padding: 1.2rem;
-}
-.c67a61a pre code {
-  padding: 0;
-  background: color-mix(in srgb, var(--surface) 0%, transparent);
-}
-.c67a61a figure img {
-  display: block;
-  border-radius: calc(var(--radius) * 0.7);
-}
-.c67a61a figcaption {
-  margin-top: 0.7rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-}
-.c6d784d {
-  margin-block: 1rem;
-  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
-  border-radius: calc(var(--radius) * 0.7);
-  background: var(--surface);
-  transition: border-color 180ms ease, box-shadow 180ms ease;
-}
-.c6d784d:hover {
-  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
-}
-.c6d784d[open] {
-  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
-  box-shadow: 0 8px 25px -14px color-mix(in srgb, var(--text) 15%, transparent);
-}
-.c0b6361 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1.3rem 1.5rem;
-  border-radius: calc(var(--radius) * 0.7);
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 1.04rem;
-  font-weight: 550;
-  line-height: 1.5;
-  list-style: none;
-  cursor: pointer;
-}
-.c0b6361::-webkit-details-marker {
-  display: none;
-}
-.c0b6361::after {
-  display: grid;
-  flex: 0 0 27px;
-  width: 27px;
-  height: 27px;
-  place-items: center;
-  content: "+";
-  border-radius: 50%;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 9%, var(--surface));
-  font-family: var(--body);
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 1;
-}
-.c6d784d[open] > .c0b6361::after {
-  content: "−";
-}
-.caebb40 {
-  padding: 0 1.5rem 1.5rem;
-  color: var(--muted);
-  font-family: var(--body);
-  font-size: 0.95rem;
-  line-height: 1.85;
-}
-.caebb40 > * + * {
-  margin-top: 1rem;
-}
-.c046fb5 {
-  margin-top: 4rem;
-  padding: 2.2rem 0 2.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
-}
-.c046fb5 .c2d132c {
-  margin-bottom: 1.2rem;
-  font-size: 1.35rem;
-}
-.c295bca {
-  display: grid;
-  gap: 0.7rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.c687193 {
-  min-width: 0;
-  padding: 0.8rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
-  border-radius: calc(var(--radius) * 0.45);
-  color: var(--muted);
-  background: color-mix(in srgb, var(--surface) 70%, var(--bg));
-  font-size: 0.82rem;
-  line-height: 1.7;
-  overflow-wrap: anywhere;
-}
-.c687193 a,
-a.c687193 {
-  color: var(--text);
-  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
-}
-.c687193 a:hover,
-a.c687193:hover {
-  color: var(--accent);
-  text-decoration-color: var(--accent);
-}
-.ca5e8de {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem 2rem;
-  margin-top: 1rem;
-  padding-block: 1.7rem 2.2rem;
-  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
-  color: var(--muted);
-  font-size: 0.78rem;
-}
-.cfa5e12 {
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-}
-.ce5b106 span {
-  color: var(--text);
-}
-@media (min-width: 1280px) {
-  .ce50974 {
-    padding-top: 5.2rem;
-  }
-  .c110fcf {
-    margin-top: 3.4rem;
-  }
-  .cfa430d {
-    padding-block: 1.6rem 1.3rem;
-  }
-}
-@media (max-width: 900px) {
-  .c5374ef {
-    width: min(100% - 3rem, 1120px);
-  }
-  .cc1708c {
-    gap: 0.65rem;
-  }
-  .cfa430d {
-    padding: 1.1rem;
-  }
-  .c941ff9 {
-    flex-direction: column;
-    gap: 0.2rem;
-  }
-  .c8c97aa {
-    width: 38px;
-    min-height: 38px;
-  }
-  .c8c97aa img,
-  .c8c97aa svg {
-    width: 25px;
-    height: 25px;
-  }
-  .cad73b2 {
-    line-height: 1;
-  }
-  .c9af5b9 {
-    margin-bottom: 3rem;
-  }
-}
-@media (max-width: 640px) {
-  html {
-    scroll-padding-top: 1rem;
-  }
-  .c5374ef {
-    width: calc(100% - 2rem);
-  }
-  .cdf9e9d {
-    min-height: 76px;
-    gap: 0.75rem;
-  }
-  .c032284 {
-    gap: 0.5rem;
-    font-size: 1.08rem;
-  }
-  .c6ec6c9 {
-    min-height: 40px;
-    padding: 0.45rem 0.8rem;
-    font-size: 0.78rem;
-  }
-  .c656090 {
-    padding-top: 1rem;
-  }
-  .ce50974 {
-    padding-top: 2.4rem;
-  }
-  .ce50974 h1 {
-    font-size: clamp(2.25rem, 10vw, 3.6rem);
-    letter-spacing: -0.05em;
-  }
-  .c19d4d7 {
-    margin-top: 1.1rem;
-    line-height: 1.75;
-  }
-  .c110fcf {
-    padding: 1.1rem;
-  }
-  .c52b26e {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.3rem;
-    margin-bottom: 1.1rem;
-  }
-  .cc1708c {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.7rem;
-  }
-  .cfa430d {
-    padding: 1.2rem;
-  }
-  #amount,
-  #received {
-    font-size: clamp(1.8rem, 8vw, 2.6rem);
-  }
-  .c941ff9 {
-    flex-direction: row;
-    gap: 0.8rem;
-    padding-block: 0.1rem;
-  }
-  .c8c97aa {
-    width: 40px;
-    min-height: 40px;
-  }
-  .c222a23 {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.2rem;
-    margin-top: 1.2rem;
-  }
-  .cc0201c {
-    font-size: 0.78rem;
-  }
-  .cf4db6d {
-    min-height: 54px;
-  }
-  .c9af5b9 {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0;
-    margin-block: 1.4rem 2.6rem;
-    padding-block: 0.5rem;
-  }
-  .c9af5b9 li {
-    justify-content: flex-start;
-    padding: 0.7rem 1rem;
-  }
-  .c9af5b9 li + li {
-    border-top: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
-    border-left: 0;
-  }
-  .cfe83a7 {
-    margin-bottom: 2.8rem;
-    padding: 1.2rem;
-  }
-  .c2d132c {
-    margin-bottom: 1.2rem;
-  }
-  .c6fbec6 {
-    font-size: 0.82rem;
-  }
-  .c6fbec6 th,
-  .c6fbec6 td {
-    padding: 0.8rem 0.6rem;
-  }
-  .c6fbec6 th {
-    width: 38%;
-  }
-  .c89626b {
-    margin-bottom: 2.5rem;
-    padding-bottom: 2.3rem;
-  }
-  .c67a61a {
-    font-size: 0.95rem;
-    line-height: 1.8;
-  }
-  .c67a61a h3 {
-    font-size: 1.2rem;
-  }
-  .c67a61a blockquote {
-    padding: 1rem 1.15rem;
-  }
-  .c0b6361 {
-    gap: 0.9rem;
-    padding: 1.1rem;
-    font-size: 0.98rem;
-  }
-  .caebb40 {
-    padding: 0 1.1rem 1.2rem;
-    font-size: 0.9rem;
-  }
-  .c046fb5 {
-    margin-top: 2.6rem;
-    padding-block: 1.8rem;
-  }
-  .ca5e8de {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.45rem;
-    padding-block: 1.4rem 1.8rem;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    transition: none;
-    animation: none;
-  }
-  .cf4db6d:hover {
-    transform: none;
-  }
-}
-@media print {
-  body {
-    background: var(--bg);
-  }
-  .c5374ef,
-  .cce5077 {
-    width: 100%;
-  }
-  .c6ec6c9,
-  .cf4db6d {
-    display: none;
-  }
-  .ce50974 {
-    padding-top: 1.5rem;
-  }
-  .ce50974 h1 {
-    font-size: 2.6rem;
-  }
-  .c110fcf,
-  .cfe83a7,
-  .c6d784d {
-    box-shadow: none;
-    break-inside: avoid;
-  }
-  .c67a61a h3,
-  .c930cb1 {
-    break-after: avoid;
-  }
-  .c67a61a table {
-    display: table;
-    overflow: visible;
-  }
-}
-</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://dappradar-dex.github.io/#website", "url": "https://dappradar-dex.github.io/", "name": "DappRadar DEX — Compare Exchanges Before You Swap ETH to USDC"}, {"@type": "WebPage", "@id": "https://dappradar-dex.github.io/#webpage", "url": "https://dappradar-dex.github.io/", "name": "DappRadar DEX — Compare Exchanges Before You Swap ETH to USDC", "isPartOf": {"@id": "https://dappradar-dex.github.io/#website"}, "description": "Use DappRadar DEX rankings to compare decentralized exchanges by volume, TVL and users, then swap ETH for USDC self-custody on the venue with the deepest liquidity for your pair.", "datePublished": "2026-10-11", "dateModified": "2026-10-11"}, {"@type": "SoftwareApplication", "name": "DappRadar DEX", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://dappradar-dex.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "DappRadar DEX"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a DappRadar DEX?", "acceptedAnswer": {"@type": "Answer", "text": "It is any decentralized exchange tracked on DappRadar's dashboards, where volume, total value locked and user counts are gathered from on-chain data so you can compare venues before swapping."}}, {"@type": "Question", "name": "Does DappRadar hold my funds when I use a DEX from its rankings?", "acceptedAnswer": {"@type": "Answer", "text": "No. DappRadar only aggregates and displays public on-chain data. The swap itself runs self-custody, directly between your wallet and the exchange's own smart contract."}}, {"@type": "Question", "name": "How do I pick a DEX for ETH to USDC?", "acceptedAnswer": {"@type": "Answer", "text": "Sort the rankings by volume and total value locked for that pair, then compare the quoted price and slippage on the top two or three exchanges before confirming a swap."}}, {"@type": "Question", "name": "Why does a top-ranked DEX sometimes quote a worse price?", "acceptedAnswer": {"@type": "Answer", "text": "Overall rank reflects total activity across all pairs on that exchange, not the depth of the specific pool you need. A smaller DEX can have a deeper pool for your exact pair."}}, {"@type": "Question", "name": "What is slippage and why does it matter?", "acceptedAnswer": {"@type": "Answer", "text": "Slippage is the difference between the quoted price and the price you actually receive once your order moves the pool. Deeper pools move less per trade, which keeps slippage lower."}}, {"@type": "Question", "name": "Is it safe to connect my wallet to an exchange found through rankings?", "acceptedAnswer": {"@type": "Answer", "text": "Treat it the same as any DEX: verify the contract address through a source such as Etherscan, grant only the approval your trade needs, and never share your seed phrase anywhere."}}, {"@type": "Question", "name": "Can I compare the same DEX across different chains?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A single exchange brand often appears multiple times in the rankings, once per chain it is deployed on, because liquidity and pricing differ by deployment even under the same name."}}]}]}</script>
+  <style>
+    :root{--bg:#09100E;--surface:#12201B;--text:#E7F3EC;--muted:#83968C;--accent:#2DD4A7;--accent-ink:#04201A;--radius:16px;--display:"Manrope";--body:"Manrope"}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 1rem/1.7 var(--body); -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-underline-offset: .22em; }
+    a:hover { text-decoration-thickness: .12em; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+    h1, h2, h3, h4, h5, h6 { font-family: var(--display); line-height: 1.15; text-wrap: balance; }
+    p, h1, h2, h3 { margin-top: 0; }
+    img, svg { max-width: 100%; vertical-align: middle; }
+    .c5374ef { width: min(1180px, calc(100% - 3rem)); margin-inline: auto; }
+    .cb46664 { position: absolute; z-index: 5; top: .5rem; left: 1rem; padding: .7rem 1rem; background: var(--surface); transform: translateY(-180%); border-radius: var(--radius); }
+    .cb46664:focus { transform: translateY(0); }
+    .c6c1176 { border-bottom: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .cd1a40f { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .c2655a0 { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); font: 650 1.12rem/1.2 var(--display); text-decoration: none; }
+    .cda7ea3 { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: calc(var(--radius) * .6); background: var(--accent); color: var(--accent-ink); }
+    .c07a93e { width: 1.2rem; height: 1.2rem; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+    .ced993b { display: flex; align-items: center; gap: 1.8rem; }
+    .ced993b > a { font-size: .88rem; font-weight: 600; text-decoration: none; }
+    .ced993b > a:not(.c4b91cc) { color: var(--muted); }
+    .c4b91cc { display: inline-flex; align-items: center; justify-content: center; gap: .8rem; min-height: 52px; padding: .85rem 1.4rem; border: 1px solid color-mix(in srgb,var(--accent-ink) 12%,transparent); border-radius: var(--radius); background: linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 88%,var(--text))); color: var(--accent-ink); font: 650 .95rem/1.3 var(--body); text-decoration: none; box-shadow: 0 6px 18px color-mix(in srgb,var(--accent) 17%,transparent); transition: transform .18s ease, box-shadow .18s ease; }
+    .c4b91cc:hover { transform: translateY(-2px); box-shadow: 0 9px 24px color-mix(in srgb,var(--accent) 25%,transparent); }
+    .cd1a40f .c4b91cc { min-height: 42px; padding: .65rem 1rem; }
+    .c042946 { padding-block: 1rem 0; color: var(--muted); font-size: .8rem; overflow-wrap: anywhere; }
+    .cad16c3 { color: var(--muted); }
+    .cad16c3 a, a.cad16c3 { color: var(--muted); text-decoration: none; }
+    .cad16c3 a:hover, a.cad16c3:hover { color: var(--accent); text-decoration: underline; }
+    .cad16c3 ol, .cad16c3 ul { display: flex; flex-wrap: wrap; gap: .5rem 1rem; padding: 0; margin: 0; list-style: none; }
+    .ce50974 { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: clamp(2rem,5vw,4.5rem); align-items: start; padding-block: 1.5rem 3rem; }
+    .ceefdd2 { display: inline-flex; align-items: center; gap: .55rem; margin-bottom: 1.3rem; color: var(--accent); font-size: .86rem; font-weight: 600; }
+    .ceefdd2::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px color-mix(in srgb,var(--accent) 9%,transparent); }
+    h1 { margin-bottom: 1.4rem; font-size: clamp(2.5rem,4.7vw,4.35rem); font-weight: 600; letter-spacing: -.055em; overflow-wrap: anywhere; }
+    h1 em { color: var(--accent); font-style: normal; }
+    .c5cb307 { max-width: 48ch; margin-bottom: 2rem; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+    .c076b59 { position: relative; min-width: 0; padding: clamp(1.1rem,2.4vw,1.5rem); border: 1px solid color-mix(in srgb,var(--accent) 20%,var(--surface)); border-radius: calc(var(--radius) * 1.6); background: linear-gradient(155deg,color-mix(in srgb,var(--accent) 7%,var(--surface)),var(--surface) 40%); box-shadow: 0 24px 64px color-mix(in srgb,var(--text) 9%,transparent),0 4px 12px color-mix(in srgb,var(--accent) 6%,transparent); }
+    .c937e27 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .7rem; margin-bottom: 1rem; }
+    .c937e27 h2 { margin: 0; font-size: 1.35rem; letter-spacing: -.035em; }
+    .c4b0bdd { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .65rem; border: 1px solid color-mix(in srgb,var(--accent) 16%,transparent); border-radius: 999px; background: color-mix(in srgb,var(--accent) 8%,var(--surface)); color: var(--accent); font-size: .72rem; font-weight: 600; }
+    .c4b0bdd::before { content: ""; width: .35rem; height: .35rem; border-radius: 50%; background: var(--accent); }
+    .route { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); align-items: center; gap: .8rem; padding: .8rem; margin-bottom: 1rem; border: 1px solid color-mix(in srgb,var(--text) 9%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .endpoint { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .45rem; }
+    .endpoint:last-child { align-items: flex-end; }
+    .endpoint-label, .c929e5a { color: var(--muted); font-size: .78rem; font-weight: 500; }
+    .logo { display: flex; align-items: center; min-height: 36px; max-width: 100%; overflow-wrap: anywhere; font: 600 1rem/1.3 var(--display); }
+    .logo img, .logo svg { max-height: 36px; width: auto; max-width: 100%; object-fit: contain; }
+    .route-arrow { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: color-mix(in srgb,var(--accent) 9%,var(--surface)); }
+    .route-arrow .c07a93e { stroke: var(--accent); }
+    .c929e5a { display: block; margin-bottom: .5rem; color: var(--text); }
+    .amount-field { display: flex; align-items: center; gap: .75rem; padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 18%,transparent); border-radius: var(--radius); background: var(--bg); transition: border-color .18s ease; }
+    .amount-field:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent); }
+    .amount-field input { width: 100%; min-width: 0; padding: .2rem 0; border: 0; background: var(--bg); color: var(--text); font: 550 1.6rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
+    .amount-field input:focus { outline: 0; }
+    .unit { color: var(--muted); font-size: .8rem; }
+    .c5a05e2 { margin: .45rem 0 .85rem; color: var(--muted); font-size: .74rem; }
+    .field-error { margin: .5rem 0; color: var(--text); font-size: .8rem; font-weight: 600; }
+    [hidden] { display: none !important; }
+    .estimate { padding: 1rem; border-radius: var(--radius); background: linear-gradient(120deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),color-mix(in srgb,var(--accent) 4%,var(--surface))); }
+    .estimate-label { margin-bottom: .25rem; color: var(--muted); font-size: .8rem; }
+    .estimate-value { display: block; color: var(--text); font: 600 clamp(1.7rem,3vw,2.5rem)/1.3 var(--display); letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .estimate-value small { color: var(--muted); font: 400 .8rem/1.4 var(--body); letter-spacing: 0; }
+    .estimate dl { display: grid; gap: .5rem; margin: .8rem 0 0; padding-top: .8rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .8rem; }
+    .estimate dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; }
+    .estimate dt { color: var(--muted); }
+    .estimate dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .method { margin-block: .7rem; color: var(--muted); font-size: .75rem; }
+    .method summary { width: fit-content; color: var(--text); cursor: pointer; }
+    .method p { margin: .65rem 0 0; }
+    .c076b59 > .c4b91cc { width: 100%; }
+    .c9ab187 { padding: .8rem 1rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: var(--radius); background: var(--surface); }
+    .cc7e546 { margin-bottom: .45rem; }
+    .c0d598d { display: flex; align-items: center; gap: .75rem; }
+    .c36a4c1 { flex: 1; min-width: 0; padding: 0; border: 0; background: transparent; color: var(--text); font: 550 1.55rem/1.2 var(--display); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+    .c36a4c1:focus { outline: 0; }
+    .cf96758 { position: relative; display: inline-flex; align-items: center; gap: .5rem; flex: none; padding: .4rem 1.5rem .4rem .5rem; border: 1px solid color-mix(in srgb,var(--text) 13%,transparent); border-radius: 999px; background: var(--bg); }
+    .c569cc5 { width: 22px; height: 22px; border-radius: 50%; object-fit: contain; flex: none; }
+    .cb49ce1 { border: 0; background: transparent; color: var(--text); font: 600 .95rem/1 var(--body); cursor: pointer; appearance: none; -webkit-appearance: none; }
+    .cb49ce1:focus { outline: 0; }
+    .cf96758::after { content: ""; position: absolute; right: .7rem; width: .42rem; height: .42rem; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: translateY(-2px) rotate(45deg); pointer-events: none; }
+    .c4a289c { margin-top: .4rem; color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
+    .c68108a { position: relative; z-index: 1; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; margin: -.55rem auto; padding: 0; border: 3px solid var(--surface); border-radius: 50%; background: color-mix(in srgb,var(--accent) 13%,var(--surface)); color: var(--accent); cursor: pointer; transition: transform .2s ease, background .2s ease; }
+    .c68108a svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .c68108a:hover { transform: rotate(180deg); background: color-mix(in srgb,var(--accent) 20%,var(--surface)); }
+    .c874375 { display: grid; gap: .5rem; margin: 1rem 0 0; padding-top: .9rem; border-top: 1px solid color-mix(in srgb,var(--accent) 15%,transparent); font-size: .82rem; }
+    .c874375 div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .2rem 1rem; }
+    .c874375 dt { color: var(--muted); }
+    .c874375 dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .c8f45ae > .c4b91cc { width: 100%; margin-top: 1.05rem; }
+    .cb7170d { padding: 2rem; border: 1px solid color-mix(in srgb,var(--text) 10%,transparent); border-radius: calc(var(--radius) * 1.3); background: var(--surface); }
+    .c2d132c { margin-bottom: 1.3rem; font-size: 1.65rem; font-weight: 550; letter-spacing: -.035em; }
+    .ca443a5 { max-width: 100%; overflow-x: auto; }
+    .c6fbec6 { width: 100%; border-collapse: collapse; text-align: left; font-size: .92rem; }
+    .c6fbec6 caption { padding-bottom: 1rem; text-align: left; color: var(--muted); }
+    .c6fbec6 th, .c6fbec6 td { padding: 1rem 1.1rem; border-bottom: 1px solid color-mix(in srgb,var(--text) 9%,transparent); vertical-align: top; overflow-wrap: anywhere; }
+    .c6fbec6 th { color: var(--muted); font-weight: 500; }
+    .c6fbec6 thead { background: color-mix(in srgb,var(--accent) 5%,var(--surface)); }
+    .c6fbec6 tbody tr:last-child > * { border-bottom: 0; }
+    .ce782e7 { max-width: 820px; padding-block: 4rem 2rem; }
+    .c89626b { margin-bottom: 3.3rem; }
+    .c930cb1 { margin: 0 0 1.1rem; font: 550 clamp(1.6rem,3vw,2.2rem)/1.2 var(--display); letter-spacing: -.035em; }
+    .c67a61a { color: var(--muted); line-height: 1.85; overflow-wrap: anywhere; }
+    .c67a61a p { margin-bottom: 1.2rem; }
+    .c67a61a strong, .c67a61a h3, .c67a61a h4 { color: var(--text); }
+    .c67a61a ul, .c67a61a ol { padding-left: 1.3rem; }
+    .c67a61a li { padding-left: .3rem; margin-block: .55rem; }
+    .c67a61a li::marker { color: var(--accent); }
+    .c67a61a blockquote { margin: 1.5rem 0; padding: 1rem 1.4rem; border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); color: var(--text); }
+    .c67a61a img { height: auto; border-radius: var(--radius); }
+    .c67a61a pre { overflow-x: auto; padding: 1rem; border-radius: var(--radius); background: var(--surface); }
+    .c67a61a code, .c67a61a pre { font-family: var(--body); }
+    .c6d784d { margin-block: .8rem; border: 1px solid color-mix(in srgb,var(--text) 11%,transparent); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+    .c0b6361 { position: relative; padding: 1.3rem 3.5rem 1.3rem 1.4rem; list-style: none; cursor: pointer; color: var(--text); font: 550 1.04rem/1.5 var(--display); }
+    .c0b6361::-webkit-details-marker { display: none; }
+    .c0b6361::after { content: "+"; position: absolute; right: 1.4rem; top: 1.2rem; color: var(--accent); font-size: 1.3rem; }
+    details[open] > .c0b6361::after { content: "−"; }
+    .c6d784d[open] { border-color: color-mix(in srgb,var(--accent) 35%,var(--surface)); }
+    .c0b6361:focus-visible { outline-offset: -5px; }
+    .caebb40 { padding: 0 1.4rem 1.4rem; color: var(--muted); overflow-wrap: anywhere; }
+    .caebb40 > :last-child { margin-bottom: 0; }
+    .cb52271 { max-width: 820px; padding-block: 1.5rem 3.5rem; border-top: 1px solid color-mix(in srgb,var(--text) 12%,transparent); }
+    .cb52271 .c2d132c { font-size: 1.25rem; }
+    .c295bca { margin: 0; padding-left: 1.25rem; color: var(--muted); font-size: .88rem; }
+    .c687193 { padding-block: .4rem; padding-left: .25rem; overflow-wrap: anywhere; }
+    .c687193 a, a.c687193 { color: var(--text); text-decoration-color: color-mix(in srgb,var(--accent) 45%,transparent); }
+    .c687193 a:hover, a.c687193:hover { color: var(--accent); }
+    .c146bf4 { border-top: 1px solid color-mix(in srgb,var(--text) 10%,transparent); }
+    .c0dcce6 { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; min-height: 96px; padding-block: 1.5rem; color: var(--muted); font-size: .8rem; }
+    .c0dcce6 p { margin: 0; }
+    .c0dcce6 a { color: var(--muted); }
+    @media (max-width: 850px) { .ce50974 { grid-template-columns: minmax(0,1fr); gap: 2.5rem; padding-block: 2.5rem 3.5rem; } .c09ff26 { max-width: 650px; } .c076b59 { width: 100%; max-width: 600px; justify-self: center; } h1 { font-size: clamp(2.5rem,7vw,4rem); } .c5cb307 { max-width: 60ch; } }
+    @media (max-width: 540px) { .c5374ef { width: calc(100% - 2rem); } .cd1a40f { min-height: 76px; gap: .7rem; } .c2655a0 { font-size: .95rem; gap: .45rem; } .cda7ea3 { width: 2rem; height: 2rem; } .ced993b { gap: .6rem; } .ced993b > a:not(.c4b91cc) { display: none; } .cd1a40f .c4b91cc { padding-inline: .85rem; font-size: .8rem; } .cb7170d { padding: 1.25rem; } .c6fbec6 th, .c6fbec6 td { padding: .8rem .55rem; } .c09ff26 > .c4b91cc { width: 100%; } .ce782e7 { padding-top: 2.8rem; } .c0dcce6 { align-items: flex-start; flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .c4b91cc, .amount-field { transition: none; } .c4b91cc:hover { transform: none; } }
+  </style>
 </head>
 <body>
-<div class="c5374ef">
-  <header class="cdf9e9d">
-    <div class="c032284"><span class="cc0593b" aria-hidden="true">⇄</span><span>Exchange</span></div>
-    <a class="c6ec6c9" href="dashboard/">Swap <span aria-hidden="true">↗</span></a>
+  <a class="cb46664" href="#content">Skip to content</a>
+  <header class="c6c1176">
+    <nav class="cd1a40f c5374ef" aria-label="Primary navigation">
+      <a class="c2655a0" href="#top" aria-label="Swap station, top of page">
+        <span class="cda7ea3" aria-hidden="true"><svg class="c07a93e" viewBox="0 0 24 24"><path d="M4 8h15m-4-4 4 4-4 4M20 16H5m4-4-4 4 4 4"/></svg></span>
+        Swap station
+      </a>
+      <div class="ced993b">
+        <a href="#facts">Key facts</a>
+        <a href="#sources">Sources</a>
+        <a class="c4b91cc" href="dashboard/">Swap</a>
+      </div>
+    </nav>
   </header>
-  <div class="c656090"><nav class="cad16c3" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>DappRadar DEX</span></nav></div>
-  <section class="ce50974" aria-labelledby="hero-title">
-    <div class="ceefdd2">A direct route to your next asset</div>
-    <h1 id="hero-title">DappRadar <em>DEX</em>.</h1>
-    <p class="c19d4d7">A DappRadar DEX is any decentralized exchange you find and compare on DappRadar before you ever connect a wallet to it. Rather than picking a swap venue by name recognition alone, you open the rankings, sort by trading volume or total value locked, and see which exchange actually has the liquidity your trade needs. The comparison happens off-chain, inside the dashboard; the swap itself — say, ETH into USDC — still runs on the exchange's own smart contract, self-custody, once you decide where to send it.</p>
-    <div class="c110fcf" role="group" aria-labelledby="exchange-title">
-      <div class="c52b26e">
-        <h2 id="exchange-title">Your exchange</h2>
-        <p>One route. Every detail in view.</p>
+  <div class="c5374ef" id="top">
+    <div class="c042946"><nav class="cad16c3" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>DappRadar DEX</span></nav></div>
+    <section class="ce50974" aria-labelledby="hero-title">
+      <div class="c09ff26">
+        <p class="ceefdd2">All swap routes</p>
+        <h1 id="hero-title">DappRadar <em>DEX</em>.</h1>
+        <p class="c5cb307">A DappRadar DEX is any decentralized exchange you find and compare on DappRadar before you ever connect a wallet to it.</p>
+        <a class="c4b91cc" href="dashboard/">Swap <svg class="c07a93e" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
       </div>
-      <div class="cc1708c">
-        <div class="cfa430d">
-          <label class="c929e5a" for="amount">You pay</label>
-          <input id="amount" name="amount" type="number" inputmode="decimal" min="1" max="1000000" step="any" value="1000" required aria-describedby="amount-help amount-message" aria-invalid="false">
-          <span class="ccc8e0f" id="amount-help">From 1 to 1,000,000 units</span>
+      <aside class="c076b59 c8f45ae" data-from="ETH" aria-labelledby="widget-title">
+        <div class="c937e27">
+          <h2 id="widget-title">Swap</h2>
+          <span class="c4b0bdd">Best route</span>
         </div>
-        <div class="c941ff9" role="group" aria-label="Exchange route">
-          <span class="c8c97aa"><img src="assets/tokens/eth.svg" alt="Ethereum" width="28" height="28"></span>
-          <span class="cad73b2" role="img" aria-label="to">→</span>
-          <span class="c8c97aa"><img src="assets/tokens/usdc.svg" alt="USD Coin" width="28" height="28"></span>
+        <div class="c9ab187">
+          <div class="cc7e546"><span class="c929e5a">You pay</span></div>
+          <div class="c0d598d">
+            <input id="pay-amount" class="c36a4c1" type="number" inputmode="decimal" min="0" max="1000000000" step="any" value="1" aria-label="Amount you pay">
+            <span class="cf96758">
+              <img class="c569cc5" id="pay-ico" width="22" height="22" alt="" src="assets/tokens/eth.svg">
+              <select id="pay-token" class="cb49ce1" aria-label="Token you pay"></select>
+            </span>
+          </div>
+          <div class="c4a289c" id="pay-usd">—</div>
         </div>
-        <div class="cfa430d c461740">
-          <label class="c929e5a" for="received">You receive</label>
-          <output id="received" for="amount" aria-live="polite" aria-atomic="true">—</output>
-          <span class="ccc8e0f">After network fee · destination units</span>
+        <button type="button" class="c68108a" id="swap-switch" aria-label="Switch the two tokens">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v13m0 0-3-3m3 3 3-3M17 20V7m0 0-3 3m3-3 3 3"/></svg>
+        </button>
+        <div class="c9ab187">
+          <div class="cc7e546"><span class="c929e5a">You receive</span></div>
+          <div class="c0d598d">
+            <output id="get-amount" class="c36a4c1" for="pay-amount">—</output>
+            <span class="cf96758">
+              <img class="c569cc5" id="get-ico" width="22" height="22" alt="" src="assets/tokens/usdt.svg">
+              <select id="get-token" class="cb49ce1" aria-label="Token you receive"></select>
+            </span>
+          </div>
+          <div class="c4a289c" id="get-usd">—</div>
         </div>
-      </div>
-      <div class="c222a23">
-        <dl class="cc0201c">
-          <div><dt>Rate</dt><dd><output id="rate" for="amount">—</output></dd></div>
-          <div><dt>Network fee</dt><dd><output id="network-fee" for="amount">—</output></dd></div>
+        <dl class="c874375">
+          <div><dt>Rate</dt><dd id="swap-rate">—</dd></div>
+          <div><dt>Network fee</dt><dd id="swap-fee">0.3%</dd></div>
         </dl>
-        <a class="cf4db6d" href="dashboard/"><span>Swap</span><span aria-hidden="true">→</span></a>
-      </div>
-      <p class="c582c0f" id="amount-message" role="status" aria-live="polite"></p>
-    </div>
-  </section>
-  <ul class="c9af5b9" aria-label="Exchange features">
-    <li>Non-custodial</li>
-    <li>On-chain</li>
-    <li>No sign-up</li>
-    <li>Transparent fees</li>
-  </ul>
-  <section class="cfe83a7" aria-labelledby="facts-title">
-    <h2 class="c2d132c" id="facts-title">Key facts</h2>
-    <div class="ca443a5" tabindex="0" role="region" aria-label="Key facts table"><table class="c6fbec6"><tbody><tr><th scope="row">What it is</th><td>An analytics dashboard that tracks decentralized exchanges</td></tr>
+        <noscript><p class="c5a05e2">Enable JavaScript to estimate the swap.</p></noscript>
+        <a class="c4b91cc" href="dashboard/">Swap <svg class="c07a93e" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      </aside>
+    </section>
+    <section class="cb7170d" id="facts" aria-labelledby="facts-title">
+      <h2 class="c2d132c" id="facts-title">Key facts</h2>
+      <div class="ca443a5"><table class="c6fbec6"><tbody><tr><th scope="row">What it is</th><td>An analytics dashboard that tracks decentralized exchanges</td></tr>
 <tr><th scope="row">Coverage</th><td>Hundreds of DEXs across dozens of blockchains</td></tr>
 <tr><th scope="row">Core metrics</th><td>Trading volume, TVL, active traders</td></tr>
 <tr><th scope="row">Custody</th><td>Self-custody — the dashboard does not hold funds</td></tr>
 <tr><th scope="row">Example pair</th><td>ETH to USDC</td></tr>
 <tr><th scope="row">Data source</th><td>On-chain activity, aggregated and refreshed continuously</td></tr></tbody></table></div>
-  </section>
-  <main class="cce5077" id="content">
+    </section>
+  </div>
+  <main class="ce782e7 c5374ef" id="content">
     <section class="c89626b"><h2 class="c930cb1">What DappRadar DEX Rankings Show You</h2><div class="c67a61a"><strong>A DappRadar DEX is any decentralized exchange tracked on DappRadar's dashboards, where trading volume, total value locked and active users are gathered from on-chain data so you can compare swap venues before you connect a wallet.</strong> Instead of guessing which exchange has enough liquidity for a trade, you open the <a href="https://dappradar.com/rankings/dexes" rel="nofollow noopener" target="_blank">DappRadar DEX rankings</a> page and see major decentralized exchanges ranked side by side, across Ethereum, Arbitrum, Base and dozens of other chains. A <a href="https://en.wikipedia.org/wiki/Decentralized_exchange" rel="nofollow noopener" target="_blank">decentralized exchange</a> lets two parties swap tokens directly from their own wallets through a smart contract, with no custodial order book and no account to open. DappRadar does not hold your funds or run the swap itself; it aggregates the public data each DEX produces on-chain and presents it as sortable tables, so the actual trade still happens on the exchange's own contract once you decide where to send it.<h3>Why Volume and TVL Are Tracked Together</h3>Volume tells you how much is actually trading right now; total value locked tells you how deep the pools behind that trading are. A DEX with high volume but thin TVL can still slip badly on a large order, while a DEX with large TVL and modest volume may offer a calmer, better-priced fill. Looking at both numbers together, rather than either alone, is the habit that separates a quick glance from a real comparison. Traders who check only one metric tend to be surprised later, either by a fill that moved the price more than expected or by a pool that turned out quieter than the volume chart implied.<h3>Chains and Pairs DappRadar Covers</h3>The rankings span Ethereum mainnet and most major layer-2 and alternative chains, with each DEX broken out by the chain it runs on. A single exchange brand, such as Uniswap, can appear multiple times — once per chain it is deployed on — because liquidity and pricing differ by deployment even under the same name. The same ETH-to-USDC pair can therefore show meaningfully different depth on one chain than on another, which is itself a reason to check the breakdown rather than assume a familiar brand behaves identically everywhere it is deployed.</div></section>
 <section class="c89626b"><h2 class="c930cb1">How DappRadar DEX Data Helps You Compare Swaps</h2><div class="c67a61a">Before entering an amount on any swap screen, a few minutes on DappRadar DEX tables can change which exchange you actually use. Sort the list by 24-hour volume to see which venues are seeing real trading right now, then cross-check total value locked to confirm that volume is backed by genuine liquidity rather than a short-lived spike. For a straightforward pair like ETH to USDC, the top few exchanges on any major chain usually offer comparable pricing, so the real question becomes which one has the deepest pool for the exact size of your order. Smaller or less common pairs show the gap more clearly: a DEX that ranks well overall can still have a shallow pool for one specific token, and the dashboard's per-pair breakdown is where that becomes visible before you sign anything. Rankings also move over time as incentives, new pools and token launches shift where traders actually send volume, so a venue worth using this month is not guaranteed to stay the best choice next month. Checking the numbers before each larger trade, rather than relying on a choice made once and never revisited, is what keeps the comparison useful rather than a one-time exercise.</div></section>
 <section class="c89626b"><h2 class="c930cb1">Reading DappRadar DEX Volume and TVL Tables</h2><div class="c67a61a">Each row in a DappRadar DEX table reduces a live exchange to three numbers that matter for a swap decision. Read them as a set, not in isolation — a high number in one column means little without the others for context. A venue with strong volume but a small user count, for instance, may be dominated by a handful of large traders rather than broad, organic demand, which can make its quoted price less stable than the headline number suggests.<table><thead><tr><th>Metric</th><th>What it measures</th><th>Why it matters for a swap</th></tr></thead><tbody><tr><td>24h Volume</td><td>Total value traded on the DEX in the last day</td><td>Shows whether a pool is actively used right now</td></tr><tr><td>TVL</td><td>Value of assets locked in the DEX's liquidity pools</td><td>Deeper pools generally mean less price impact</td></tr><tr><td>Users</td><td>Distinct wallets that traded recently</td><td>Flags whether activity is broad or concentrated</td></tr></tbody></table></div></section>
@@ -1117,71 +241,66 @@ a.c687193:hover {
 <details class="c6d784d"><summary class="c0b6361">Is it safe to connect my wallet to an exchange found through rankings?</summary><div class="caebb40">Treat it the same as any DEX: verify the contract address through a source such as Etherscan, grant only the approval your trade needs, and never share your seed phrase anywhere.</div></details>
 <details class="c6d784d"><summary class="c0b6361">Can I compare the same DEX across different chains?</summary><div class="caebb40">Yes. A single exchange brand often appears multiple times in the rankings, once per chain it is deployed on, because liquidity and pricing differ by deployment even under the same name.</div></details>
   </main>
-  <section class="c046fb5 cce5077" aria-labelledby="sources-title">
+  <section class="cb52271 c5374ef" id="sources" aria-labelledby="sources-title">
     <h2 class="c2d132c" id="sources-title">Sources</h2>
     <ul class="c295bca"><li><a class="c687193" href="https://dappradar.com/" rel="nofollow noopener" target="_blank">DappRadar</a></li>
 <li><a class="c687193" href="https://docs.uniswap.org/" rel="nofollow noopener" target="_blank">Uniswap documentation</a></li>
 <li><a class="c687193" href="https://defillama.com/" rel="nofollow noopener" target="_blank">DefiLlama</a></li>
 <li><a class="c687193" href="https://en.wikipedia.org/wiki/Decentralized_exchange" rel="nofollow noopener" target="_blank">Wikipedia — Decentralized exchange</a></li></ul>
   </section>
-  <footer class="ca5e8de">
-    <span class="cfa5e12">Exchange</span>
-    <p class="ce5b106">Updated <span>Updated Oct 10, 2026</span></p>
+  <footer class="c146bf4">
+    <div class="c0dcce6 c5374ef">
+      <p>Updated Oct 11, 2026</p>
+      <a href="#top">Back to top ↑</a>
+    </div>
   </footer>
-</div>
-<script>
-(() => {
-  'use strict';
-  const amount = document.getElementById('amount');
-  const received = document.getElementById('received');
-  const rateOutput = document.getElementById('rate');
-  const feeOutput = document.getElementById('network-fee');
-  const message = document.getElementById('amount-message');
-  const exchangeRate = 0.985;
-  const baseFee = 0.25;
-  const networkFactor = 0.001;
-  const formatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 6 });
-  let timer;
-
-  function clearQuote() {
-    received.value = '—';
-    rateOutput.value = '—';
-    feeOutput.value = '—';
-  }
-
-  function updateQuote() {
-    clearTimeout(timer);
-    const raw = amount.value.trim();
-    const value = amount.valueAsNumber;
-    const valid = raw !== '' && Number.isFinite(value) && value >= 1 && value <= 1000000 && !amount.validity.badInput;
-    amount.setAttribute('aria-invalid', String(!valid));
-    message.dataset.invalid = String(!valid);
-    if (!valid) {
-      clearQuote();
-      const error = 'Enter an amount from 1 to 1,000,000.';
-      amount.setCustomValidity(error);
-      message.textContent = error;
-      return;
-    }
-    amount.setCustomValidity('');
-    const networkFee = baseFee + value * networkFactor;
-    const netAmount = Math.max(0, value * exchangeRate - networkFee);
-    received.value = formatter.format(netAmount);
-    rateOutput.value = '1 → ' + formatter.format(exchangeRate);
-    feeOutput.value = formatter.format(networkFee) + ' destination units';
-    message.textContent = '';
-  }
-
-  amount.addEventListener('input', () => {
-    clearTimeout(timer);
-    amount.setCustomValidity('');
-    clearQuote();
-    timer = setTimeout(updateQuote, 200);
-  });
-  amount.addEventListener('change', updateQuote);
-  amount.addEventListener('blur', updateQuote);
-  updateQuote();
-})();
-</script>
+  <script>
+    (() => {
+      const TOKENS = [
+        { s: 'ETH', f: 'eth', p: 2550 }, { s: 'BTC', f: 'btc', p: 62000 },
+        { s: 'USDT', f: 'usdt', p: 1 }, { s: 'USDC', f: 'usdc', p: 1 },
+        { s: 'BNB', f: 'bnb', p: 585 }, { s: 'SOL', f: 'sol', p: 145 },
+        { s: 'ARB', f: 'arb', p: 0.62 }, { s: 'OP', f: 'optimism', p: 1.65 },
+        { s: 'MATIC', f: 'polygon', p: 0.42 }, { s: 'AVAX', f: 'avalanche', p: 27 },
+        { s: 'SUI', f: 'sui', p: 1.35 }, { s: 'LTC', f: 'ltc', p: 72 },
+        { s: 'TRX', f: 'trx', p: 0.16 }, { s: 'XMR', f: 'xmr', p: 155 },
+        { s: 'XRP', f: 'xrp', p: 0.52 }, { s: 'ZEC', f: 'zec', p: 32 }
+      ];
+      const FEE = 0.003;
+      const $ = (id) => document.getElementById(id);
+      const payAmt = $('pay-amount'), payTok = $('pay-token'), payUsd = $('pay-usd'), payIco = $('pay-ico');
+      const getAmt = $('get-amount'), getTok = $('get-token'), getUsd = $('get-usd'), getIco = $('get-ico');
+      const rateEl = $('swap-rate');
+      const tok = (s) => TOKENS.find((t) => t.s === s);
+      const num = (n) => new Intl.NumberFormat('en', { maximumFractionDigits: n >= 1 ? 4 : 6 }).format(n);
+      const usd = (v) => '~$' + new Intl.NumberFormat('en', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+      TOKENS.forEach((t) => {
+        [payTok, getTok].forEach((sel) => { const o = document.createElement('option'); o.value = t.s; o.textContent = t.s; sel.appendChild(o); });
+      });
+      const widget = document.querySelector('.c8f45ae');
+      const defFrom = (widget && widget.dataset.from) || 'ETH';
+      const fromOk = TOKENS.some((t) => t.s === defFrom) ? defFrom : 'ETH';
+      payTok.value = fromOk;
+      getTok.value = (fromOk === 'USDT') ? 'ETH' : 'USDT';
+      const calc = () => {
+        const pf = tok(payTok.value), gt = tok(getTok.value);
+        payIco.src = 'assets/tokens/' + pf.f + '.svg'; payIco.alt = pf.s;
+        getIco.src = 'assets/tokens/' + gt.f + '.svg'; getIco.alt = gt.s;
+        rateEl.textContent = '1 ' + pf.s + ' ≈ ' + num(pf.p / gt.p) + ' ' + gt.s;
+        const a = parseFloat(payAmt.value);
+        if (!Number.isFinite(a) || a <= 0) { getAmt.textContent = '—'; payUsd.textContent = '—'; getUsd.textContent = '—'; return; }
+        const out = a * (pf.p / gt.p) * (1 - FEE);
+        getAmt.textContent = num(out) + ' ' + gt.s;
+        payUsd.textContent = usd(a * pf.p);
+        getUsd.textContent = usd(out * gt.p);
+      };
+      const distinct = (changed, other) => { if (changed.value === other.value) { other.value = (TOKENS.find((t) => t.s !== changed.value) || TOKENS[0]).s; } };
+      payAmt.addEventListener('input', calc);
+      payTok.addEventListener('change', () => { distinct(payTok, getTok); calc(); });
+      getTok.addEventListener('change', () => { distinct(getTok, payTok); calc(); });
+      $('swap-switch').addEventListener('click', () => { const t = payTok.value; payTok.value = getTok.value; getTok.value = t; calc(); });
+      calc();
+    })();
+  </script>
 </body>
 </html>
